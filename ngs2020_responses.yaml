@@ -1,0 +1,918 @@
+AFT_050:
+  '1': Full time
+  '2': Part time
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+AFT_070:
+  '1': Permanent
+  '2': Not permanent
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+AFT_080:
+  '1': Seasonal job
+  '2': Temporary, term or contract job
+  '3': Casual job
+  '4': Other
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+AFT_090:
+  '1': Closely related
+  '2': Somewhat related
+  '3': Not at all related
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_11:
+  '1': Closely related
+  '2': Somewhat related
+  '3': Not at all related
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+AFT_P010:
+  '0': '0'
+  '1': '1'
+  '2': '2'
+  '3': '3'
+  '4': 4 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+AFT_P020:
+  '1': Already working at a job or business
+  '2': Less than 6 months
+  '3': 6 months to less than 12 months
+  '4': 1 year or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+AFT_P040:
+  '1': Employee
+  '2': Self-employed / Working in a family business without pay
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA3_P01:
+  '1': Employee
+  '2': Self-employed / Working in a family business without pay
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+BEF_160:
+  '1': None
+  '2': Less than 12 months
+  '3': 12 months to less than 24 months
+  '4': 24 months to less than 36 months
+  '5': 36 months to less than 48 months
+  '6': 48 months or more
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+BEF_P140:
+  '1': Working at a job or business
+  '2': Looking for work
+  '3': Going to school
+  '4': Personal
+  '5': Other
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+CERTLEVP:
+  '1': College
+  '2': Bachelor's
+  '3': Master's / Doctorate
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+HLOSGRDP:
+  '1': College
+  '2': Bachelor's
+  '3': Master's / Doctorate
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+HLOSINTP:
+  '1': College
+  '2': Bachelor's
+  '3': Master's / Doctorate
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PREVLEVP:
+  '1': College
+  '2': Bachelor's
+  '3': Master's / Doctorate
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+COV_010:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+COV_080:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+EDU_010:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA2_07:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_15:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA_010:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+MS_P02:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_280A:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_280B:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_280C:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_280D:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_280E:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_280F:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_290:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_350:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_380:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_430:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_P100:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STLP160N:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STLP170N:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_010:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_020:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_080:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_100A:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_100B:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_100C:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_100D:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_150:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160B:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160C:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160D:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160E:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160F:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160G:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160H:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160I:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160J:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_160L:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170A:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170B:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170C:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170D:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170E:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170F:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170G:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170H:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170I:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170J:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_170L:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_190:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STULOANS:
+  '1': 'Yes'
+  '2': 'No'
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+COV_070:
+  '1': No change
+  '2': Delayed pursuing further studies
+  '3': Decided to pursue further studies
+  '4': Decided not to pursue further studies
+  '5': Other
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+CTZSHIPP:
+  '1': Canadian citizen by birth
+  '2': Canadian citizen by naturalization
+  '3': Landed immigrant
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+DBTALGRD:
+  '0': $0
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+DBTALINT:
+  '0': $0
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+DBTOTGRD:
+  '0': $0
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+DBTOTINT:
+  '0': $0
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+OWEGVIN:
+  '0': $0
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+OWESLGD:
+  '0': $0
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+DDIS_FL:
+  '1': Yes, has at least one disability
+  '2': No, does not have a disability
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+EDU_P020:
+  '1': One
+  '2': Two or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+GENDER2:
+  '1': Men+
+  '2': Women+
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+GRADAGEP:
+  '1': Less than 25
+  '2': 25 to 29
+  '3': 30 to 39
+  '4': 40 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+JOBINCP:
+  '1': Less than $30,000
+  '2': $30,000 to $49,999
+  '3': $50,000 to $69,999
+  '4': $70,000 to $89,999
+  '5': $90,000 or more
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+PERSINCP:
+  '1': Less than $30,000
+  '2': $30,000 to $49,999
+  '3': $50,000 to $69,999
+  '4': $70,000 to $89,999
+  '5': $90,000 or more
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+JOBQLEVP:
+  '0': Other
+  '1': College
+  '2': Bachelor's
+  '3': Master's / Doctorate
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+JOBQLGRD:
+  '0': No education requirements specified
+  '1': Respondent has more than required
+  '2': Respondent has same as required
+  '3': Respondent has less than required
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+JOBQLINT:
+  '0': No education requirements specified
+  '1': Respondent has more than required
+  '2': Respondent has same as required
+  '3': Respondent has less than required
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LFCINDP:
+  '1': Goods-producing industries
+  '2': Trade, transportation and warehousing
+  '3': Finance, insurance, real estate, public administration
+  '4': Professional, scientific and technical services
+  '5': Educational services
+  '6': Other services
+  '7': Health care and social assistance
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+LFCOCCP:
+  '2': Business, finance and administration occupations
+  '3': Natural and applied sciences and related occupations
+  '4': Health occupations
+  '5': Occupations,education,law,social,community and gov services
+  '7': Sales and service occupations
+  '10': Other
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+LFSTATP:
+  '1': Employed
+  '2': Unemployed
+  '3': Not in the labour force
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LFWFTPTP:
+  '1': Full-time (30 hours or more)
+  '2': Part-time (29 hours or less)
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_05:
+  '1': Permanent
+  '2': Not permanent
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_08:
+  '1': Job ad
+  '2': Direct contact with employer
+  '3': Through school
+  '4': Employment agency
+  '5': Networking event or job fair
+  '6': Family
+  '7': Friends
+  '8': Other
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+LMA6_12:
+  '1': Overqualified
+  '2': Qualified
+  '3': Underqualified
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_13A:
+  '1': Very satisfied
+  '2': Satisfied
+  '3': Neither satisfied nor dissatisfied
+  '4': Dissatisfied
+  '5': Very dissatisfied
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_13B:
+  '1': Very satisfied
+  '2': Satisfied
+  '3': Neither satisfied nor dissatisfied
+  '4': Dissatisfied
+  '5': Very dissatisfied
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+LMA6_13C:
+  '1': Very satisfied
+  '2': Satisfied
+  '3': Neither satisfied nor dissatisfied
+  '4': Dissatisfied
+  '5': Very dissatisfied
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+MS_P01:
+  '1': Married / Living common law
+  '2': Single / Widowed / Separated / Divorced
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PAR1GRD:
+  '1': Graduate's level of education was higher than one parent's
+  '2': Graduate's level of education was the same as one parent's
+  '3': Graduate's level of education was lower than one parent's
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PAR1INT:
+  '1': Graduate's level of education was higher than one parent's
+  '2': Graduate's level of education was the same as one parent's
+  '3': Graduate's level of education was lower than one parent's
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PAR2GRD:
+  '1': Graduate's level of education was higher than other parent's
+  '2': Graduate's level of education was the same as other parent's
+  '3': Graduate's level of education was lower than other parent's
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PAR2INT:
+  '1': Graduate's level of education was higher than other parent's
+  '2': Graduate's level of education was the same as other parent's
+  '3': Graduate's level of education was lower than other parent's
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGMCIPAP:
+  '1': Education
+  '2': Visual/performing arts / comms technologies / Humanities
+  '3': Humanities
+  '4': Social and behavioural sciences and law
+  '5': Business, management and public administration
+  '6': Physical and life sciences and technologies
+  '7': Mathematics, computer and information sciences
+  '8': Architecture, engineering, and related trades
+  '9': Health and related fields
+  '10': Other
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+PGM_410:
+  '1': Reputation of institution
+  '2': Program availability or admission to the program
+  '3': Location of institution
+  '4': Tuition fees, scholarship, grants or bursaries
+  '5': Recommendation of family or friends
+  '6': Quality or availability of online or distance education
+  '7': Language of instruction at institution
+  '8': Availability of work placements
+  '9': Other
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+PGM_415:
+  '1': Employment opportunities
+  '2': Field of study or specialization
+  '3': Personal or professional interest
+  '4': Reputation of program
+  '5': Recommendation of family or friends
+  '6': Other
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+PGM_P034:
+  '1': Full-time student
+  '2': Part-time student or both full-time and part-time
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_P036:
+  '1': Had a job
+  '2': Financial reason
+  '3': Program not offered full time
+  '4': Personal reasons
+  '5': Other
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_P111:
+  '1': Co-op program
+  '2': Internship, practicum, clinical placement, field experience
+  '3': Other
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+PGM_P401:
+  '1': None or not applicable
+  '2': Less than 50%
+  '3': 50% to 100%
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+REG_INST:
+  '1': Atlantic provinces
+  '2': Quebec
+  '3': Ontario
+  '4': Western provinces, territories
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+REG_RESP:
+  '1': Atlantic provinces
+  '2': Quebec
+  '3': Ontario
+  '4': Western provinces, territories
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+RESPP:
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+SCHOLARP:
+  '1': Less than $5,000
+  '2': $5,000 to less than $10,000
+  '3': $10,000 to less than $25,000
+  '4': $25,000 or more
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+SRCFUND:
+  '1': One source of funding
+  '2': Two sources of funding
+  '3': Three or more sources of funding
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+STL_030:
+  '1': Never needed one
+  '2': Thought I would not qualify
+  '3': Did not know how to apply
+  '4': Did not meet residency requirements
+  '5': Not willing to borrow to go to school
+  '6': Other
+  '96': Valid skip
+  '97': Don't know
+  '98': Refusal
+  '99': Not stated
+STL_130:
+  '1': Less than 1 year
+  '2': 1 to 3 years
+  '3': 4 to 6 years
+  '4': 7 to 10 years
+  '5': More than 10 years
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
+VISBMINP:
+  '1': Identified as member of a visible minority group
+  '2': Not identified as a member of a visible minority group
+  '3': Unknown
+  '6': Valid skip
+  '7': Don't know
+  '8': Refusal
+  '9': Not stated
