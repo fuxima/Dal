@@ -1,0 +1,233 @@
+---
+title: "NGS2020 Database Analyzer"
+format: html
+engine: knitr
+code-fold: true
+---
+
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Import libraries
+import pandas as pd
+import plotly.express as px
+import yaml
+from IPython.display import HTML, display
+import ipywidgets as widgets
+
+try:
+    # Load table descriptions
+    with open('ngs2020_questions.yaml', 'r') as file:
+        TABLE_DESCRIPTIONS = yaml.safe_load(file)
+        del TABLE_DESCRIPTIONS['PUMFID']
+    
+    # Get available tables
+    excel = pd.ExcelFile("NGS_Tables.xlsx")
+    available_tables = [t for t in TABLE_DESCRIPTIONS if t in excel.sheet_names]
+    excel.close()
+    
+    # Create table selector dropdown
+    table_selector = widgets.Dropdown(
+        options=[(f"{table} - {TABLE_DESCRIPTIONS.get(table, '')}", table) 
+                for table in available_tables],
+        description='Select table:',
+        layout={'width': '800px'},
+        style={'description_width': 'initial'}
+    )
+    
+    # Display the selector
+    display(HTML("""
+    <style>
+    body { padding: 20px; }
+    .card { margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .table-responsive { margin-bottom: 20px; }
+    .viz-container { margin: 15px 0; min-height: 400px; }
+    .table-description { font-style: italic; color: #6c757d; margin-bottom: 10px; }
+    .alert { margin-top: 15px; }
+    </style>
+    
+    <h1 class="text-center mb-4">NGS2020 Database Analyzer</h1>
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Table Selection</h5>
+        </div>
+        <div class="card-body">
+            <p>Select table (""" + str(len(available_tables)) + """ available):</p>
+    """))
+    
+    display(table_selector)
+    
+    # Main output display
+    out = widgets.Output()
+    display(out)
+    
+    def load_table_data(table_name):
+        try:
+            df = pd.read_excel("NGS_Tables.xlsx", sheet_name=table_name)
+            
+            if df.empty:
+                return display(HTML('<div class="alert alert-danger">Table is empty</div>'))
+            
+            # Clean data
+            for col in df.columns:
+                if df[col].dtype == 'object':
+                    df[col] = df[col].astype(str)
+                    if col.lower() != 'code':
+                        df[col] = df[col].str.replace(',', '').str.replace('%', '')
+                        try:
+                            df[col] = pd.to_numeric(df[col])
+                        except:
+                            pass
+
+            if 'Answer Categories' in df.columns and 'Code' in df.columns:
+                total_mask = df['Answer Categories'].str.strip().str.lower() == 'total'
+                df.loc[total_mask, 'Code'] = ''
+
+            return df
+        except Exception as e:
+            display(HTML(f'<div class="alert alert-danger">Error loading table: {str(e)}</div>'))
+            return pd.DataFrame()
+    
+    def create_viz(df, table_name):
+        viz = {}
+        if df.empty:
+            return viz
+        
+        try:
+            plot_df = df[
+                (df['Answer Categories'].notna()) & 
+                (df['Answer Categories'] != 'Total')
+            ].copy()
+            
+            plot_df['Weighted Frequency'] = pd.to_numeric(
+                plot_df['Weighted Frequency'].astype(str).str.replace(',', ''),
+                errors='coerce'
+            ).dropna()
+            
+            if plot_df.empty:
+                return viz
+
+            # Pie Chart
+            viz['pie'] = px.pie(
+                plot_df, 
+                values='Weighted Frequency', 
+                names='Answer Categories',
+                title=f"{table_name}: Weighted Distribution",
+                hole=0.3 if len(plot_df) > 5 else 0
+            )
+            
+            # Bar Chart
+            viz['bar'] = px.bar(
+                plot_df,
+                x='Answer Categories',
+                y='Weighted Frequency',
+                title=f"{table_name}: Weighted Frequency by Category"
+            ).update_traces(marker_color='rgba(55, 128, 191, 0.7)')
+            
+            # Box Plot (if numeric)
+            if pd.api.types.is_numeric_dtype(plot_df['Weighted Frequency']):
+                viz['box'] = px.box(
+                    plot_df,
+                    y='Weighted Frequency',
+                    title=f"{table_name}: Weighted Frequency Distribution"
+                )
+                
+        except Exception as e:
+            print(f"Visualization error: {e}")
+            
+        return viz
+    
+    def on_table_change(change):
+        with out:
+            out.clear_output()
+            if change['new']:
+                table_name = change['new']
+                df = load_table_data(table_name)
+                
+                if not df.empty:
+                    # Display table info
+                    display(HTML(f"""
+                        <div class="card mt-4">
+                            <div class="card-header bg-success text-white">
+                                <h5>{table_name}</h5>
+                                <p class="table-description">{TABLE_DESCRIPTIONS.get(table_name, '')}</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    {df.to_html(
+                                        classes='table table-striped table-bordered table-hover', 
+                                        index=False,
+                                        float_format=lambda x: '{:,.0f}'.format(x) 
+                                            if isinstance(x, (int, float)) and x.is_integer() 
+                                            else '{:,.2f}'.format(x) 
+                                            if isinstance(x, (int, float)) 
+                                            else str(x),
+                                        na_rep=''
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    """))
+                    
+                    # Display statistics
+                    numeric_cols = [col for col in df.columns 
+                                  if pd.api.types.is_numeric_dtype(df[col]) 
+                                  and col.lower() != 'code']
+                    if numeric_cols:
+                        stats_html = """
+                        <div class="card mt-4">
+                            <div class="card-header bg-info text-white">
+                                <h5>Statistics</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead><tr><th>Metric</th>
+                        """
+                        for col in numeric_cols:
+                            stats_html += f"<th>{col}</th>"
+                        stats_html += "</tr></thead><tbody>"
+                        
+                        metrics = ['count', 'mean', 'median', 'min', 'max', 'std']
+                        for metric in metrics:
+                            stats_html += f"<tr><td>{metric.capitalize()}</td>"
+                            for col in numeric_cols:
+                                val = getattr(df[col], metric)()
+                                stats_html += f"<td>{round(val, 2) if isinstance(val, float) else val}</td>"
+                            stats_html += "</tr>"
+                        
+                        stats_html += "</tbody></table></div></div></div>"
+                        display(HTML(stats_html))
+                    
+                    # Display visualizations
+                    viz = create_viz(df, table_name)
+                    if viz:
+                        display(HTML("""
+                            <div class="card mt-4">
+                                <div class="card-header bg-warning text-dark">
+                                    <h5>Visualizations</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                        """))
+                        
+                        for chart_type, fig in viz.items():
+                            fig.show()
+                        
+                        display(HTML("</div></div></div>"))
+
+    table_selector.observe(on_table_change, names='value')
+
+    # Load first table by default
+    if available_tables:
+        table_selector.value = available_tables[0]
+
+except Exception as e:
+    display(HTML(f"""
+    <div class="alert alert-danger">
+        <strong>Error initializing dashboard:</strong> {str(e)}
+    </div>
+    """))
+    raise e

@@ -1,0 +1,796 @@
+---
+title: "The Graduate Journey: Education and Labour Market Realities in Canada"
+author:
+    - name: "Fuxi Ma <fuxi.ma@outlook.com>"
+format: 
+  html:
+    toc: true
+    toc-depth: 5  
+    toc-expand: true      
+    highlight-on-scroll: true  
+    toc-location: right    
+    number-sections: true
+  pdf:
+    toc: true
+    toc-depth: 5
+    number-sections: true
+    documentclass: article
+    papersize: a4
+    geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
+    linestretch: 1.25
+    fontsize: 11pt
+    urlcolor: blue
+    linkcolor: red
+    include-before-body: |
+      \clearpage
+      \thispagestyle{empty}
+      \tableofcontents
+      \clearpage
+    header-includes:
+      - \usepackage{titling}
+      - \pretitle{\begin{center}\vspace*{2cm}\Huge}
+      - \posttitle{\end{center}\clearpage}
+editor: visual
+output: html_document
+execute: 
+  cache: true
+jupyter: python3
+---
+
+# Data
+
+## National Graduates Survey- class of 2020 (Data collected in 2023)
+
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib as plt
+from IPython.display import display, Markdown
+
+# Read the CSV file
+try:
+    # Read the CSV file into a pandas DataFrame
+    df = pd.read_csv('ngs2020.csv')
+    
+    # Display basic information about the dataset
+    display(Markdown("<span style='color: green'>Dataset information:</span>"))
+    print(f"Number of rows: {df.shape[0]}")
+    print(f"Number of columns: {df.shape[1]}\n")
+    df.info()
+    print("\n")
+    display(Markdown("<span style='color: green'>Column names:</span>"))
+    print(" ".join(list(df.columns)),"\n")
+    
+    # Number of missing data
+    missing_data = df.isnull().sum().sum()
+    if missing_data == 0:
+        print(f"\033[30;43mThere are no missing data.\033[0m")
+    else:
+        print(f"\033[30;43mThere are {missing_data} missing data.\033[0m")
+    
+except FileNotFoundError:
+    print("Error: The file 'ngs2020.csv' was not found in the current directory.")
+except pd.errors.EmptyDataError:
+    print("Error: The file 'ngs2020.csv' is empty.")
+except pd.errors.ParserError:
+    print("Error: There was an issue parsing the CSV file. Check if it's properly formatted.")
+```
+
+## NGS Questions
+
+```{python}
+import yaml
+import os
+
+# Path to the YAML file
+file_path = 'ngs2020_questions.yaml'
+
+try:
+    # Open and load the YAML file
+    with open(file_path, 'r') as file:
+        questions = yaml.safe_load(file)
+    
+    # Print the loaded question structure
+
+    print(f'\033[32m\nPUMFID: \033[0m Public Use Microdata File ID - {questions["PUMFID"]}\n')
+    print(f"Questions ({len(questions)-1}):\n")
+    k = 0
+    for question in questions:
+      if k == 5:
+        break
+      else:
+        if question != 'PUMFID':
+            print(f'\033[32m{question}: \033[0m {questions[question]}')
+        
+except FileNotFoundError:
+    print(f"Error: File '{file_path}' not found.")
+except yaml.YAMLError as e:
+    print(f"Error parsing YAML file: {e}")
+```
+
+## Response code
+
+```{python}
+# Import the yaml module
+from IPython.display import display, Markdown
+import yaml
+import os
+
+# Check if the file exists before attempting to load it
+file_path = "ngs2020_responses.yaml"
+
+if os.path.exists(file_path):
+    # Open and load the YAML file
+    with open(file_path, 'r') as file:
+        try:
+            # Load the YAML content into a Python object (typically a dictionary)
+            responses = yaml.safe_load(file)
+            
+            # Print the first few items to verify the responses loaded correctly
+            display(Markdown(f"<span style='color: green'>Response code defination ({len(responses)}):</span>"))
+            k = 0
+            for response in responses:
+                if k > 5:
+                    break  # print out 10 only
+                print(f'\033[32m{response}:\033[0m')
+                for code in responses[response]:
+                    print(f'  \033[32m{code}: \033[0m{responses[response][code]}')
+                k += 1
+                
+        except yaml.YAMLError as e:
+            print(f"Error parsing YAML file: {e}")
+else:
+    print(f"File not found: {file_path}")
+    print("Please make sure the file exists in the current working directory.")
+    print(f"Current working directory: {os.getcwd()}")
+```
+
+# Extract All NGS Tables to Excel
+
+```{python}
+# %run Extract_All_NGS_Tables_to_Excel.ipynb`
+print("All tables saved to NGS_Tables.xlsx")
+```
+
+## Function for getting NGS table
+
+```{python}
+# Get NGS table
+
+def get_NGS_table(table_name = 'AFT_050', excel_file="NGS_Tables.xlsx"):
+    try:
+        # Read the Excel sheet into a DataFrame, using first row as headers
+        df = pd.read_excel(excel_file, 
+                          sheet_name=table_name, 
+                          header=0)  # header=0 is default but making it explicit
+        print(f"\n'\033[32m{table_name}\033[0m': {questions[table_name]}\n")
+        df
+        return df
+    except Exception as e:
+        print(f"Error loading table {table_name}: {e}")
+        return None
+```
+
+# Data Analysis
+
+## Distribution of Personal Income in 2022
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Assuming your DataFrame is named 'df'
+# First let's clean up the column names and data if needed
+df = get_NGS_table("PERSINCP")
+df.columns = ['Answer Categories', 'Code', 'Frequency', 'Weighted Frequency', '%']
+
+# Clean any whitespace or formatting issues in the numeric columns
+df['Frequency'] = df['Frequency'].astype(str).str.replace(',', '').astype(int)
+df['Weighted Frequency'] = df['Weighted Frequency'].astype(str).str.replace(',', '').astype(int)
+df['%'] = df['%'].astype(float)
+
+# Fix the income range labels by combining with the previous row's dollar sign
+for i in range(1, 4):
+    if not df.loc[i, 'Answer Categories'].startswith('$'):
+        df.loc[i, 'Answer Categories'] = '$' + df.loc[i, 'Answer Categories']
+
+# Remove 'Not stated' for clearer analysis of income distribution
+df_income = df[df['Code'] != 99].copy()
+
+# Set style
+sns.set_style("whitegrid")
+plt.figure(figsize=(6, 5))
+
+# Create bar plot - using '%' column for y-axis
+ax = sns.barplot(
+    x='Answer Categories', 
+    y='%', 
+    data=df_income,
+    palette="viridis",
+    edgecolor='black'
+)
+
+# Customize plot
+plt.title('Distribution of Personal Income in 2022 (Excluding "Not Stated")', fontsize=14, pad=20)
+plt.xlabel('Income Range', fontsize=12)
+plt.ylabel('Percentage of Graduates (%)', fontsize=12)
+plt.xticks(rotation=45, ha='right')
+
+# Add value labels
+for p in ax.patches:
+    ax.annotate(
+        f'{p.get_height():.1f}%', 
+        (p.get_x() + p.get_width() / 2., p.get_height()), 
+        ha='center', 
+        va='center', 
+        xytext=(0, 5), 
+        textcoords='offset points',
+        fontsize=10
+    )
+
+# Adjust layout
+plt.tight_layout()
+
+# Show plot
+plt.show()
+
+# Additional analysis
+print("\nKey Statistics:")
+print(f"Total respondents (excluding 'Not stated'): {df_income['Frequency'].sum():,}")
+median_category = df_income[df_income['%'].cumsum() >= 50].iloc[0]['Answer Categories']
+print(f"Median income category: {median_category}")
+print(f"Highest proportion category: {df_income.loc[df_income['%'].idxmax(), 'Answer Categories']} ({df_income['%'].max():.1f}%)")
+
+# Create a pie chart for another visualization
+plt.figure(figsize=(5, 5))
+plt.pie(
+    df_income['%'],
+    labels=df_income['Answer Categories'],
+    autopct='%1.1f%%',
+    startangle=90,
+    colors=sns.color_palette("viridis", len(df_income)),
+    wedgeprops={'edgecolor': 'black', 'linewidth': 0.5},
+    textprops={'fontsize': 10}
+)
+plt.title('Weighted Income Distribution of 2020 Graduates in 2022', fontsize=14, pad=20)
+plt.tight_layout()
+plt.show()
+
+```
+
+## Age Distribution at Graduation
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Assuming your DataFrame is named 'df_gradage'
+# Clean the data
+df_gradage = get_NGS_table('GRADAGEP')
+df_gradage['Frequency'] = df_gradage['Frequency'].astype(str).str.replace(',', '').astype(int)
+df_gradage['Weighted Frequency'] = df_gradage['Weighted Frequency'].astype(str).str.replace(',', '').astype(int)
+df_gradage['%'] = df_gradage['%'].astype(float)
+
+# Remove 'Total' and 'Not stated' rows for analysis
+df_age = df_gradage[~df_gradage['Code'].isin([9, float('nan')])].copy()
+
+# Set style
+sns.set_style("whitegrid")
+plt.rcParams['font.size'] = 8  # Global font size reduction
+
+# 1. Compact Bar Chart (6x4 inches)
+plt.figure(figsize=(6, 4))
+ax = sns.barplot(
+    x='Answer Categories', 
+    y='%', 
+    data=df_age,
+    palette="mako",  # Professional blue gradient
+    edgecolor='black',
+    linewidth=0.5
+)
+
+# Customize plot
+plt.title('Age Distribution at Graduation (Class of 2020)', fontsize=9, pad=10)
+plt.xlabel('Age Group', fontsize=8)
+plt.ylabel('Percentage (%)', fontsize=8)
+plt.xticks(rotation=25, ha='right')  # Slight rotation for readability
+
+# Add precise value labels
+for p in ax.patches:
+    ax.annotate(
+        f'{p.get_height():.1f}%', 
+        (p.get_x() + p.get_width()/2., p.get_height()), 
+        ha='center', 
+        va='center', 
+        xytext=(0, 4), 
+        textcoords='offset points',
+        fontsize=7,
+        bbox=dict(boxstyle='round,pad=0.2', fc='white', ec='none', alpha=0.8)
+    )
+
+plt.tight_layout()
+plt.show()
+
+# 2. Compact Pie Chart (5x5 inches)
+plt.figure(figsize=(4, 4))
+wedges, texts, autotexts = plt.pie(
+    df_age['%'],
+    labels=df_age['Answer Categories'],
+    autopct='%1.1f%%',
+    startangle=90,
+    colors=sns.color_palette("mako", len(df_age)),
+    wedgeprops={'edgecolor': 'black', 'linewidth': 0.5},
+    textprops={'fontsize': 7},
+    pctdistance=0.8  # Pull percentages inward
+)
+
+# Improve label readability
+plt.setp(texts, fontsize=7)
+plt.setp(autotexts, fontsize=7, color='white', weight='bold')
+plt.title('Age at Graduation', fontsize=9, pad=10)
+plt.tight_layout()
+plt.show()
+
+# Detailed Analysis
+print("\n=== Age at Graduation Analysis ===")
+print(f"Total graduates analyzed: {df_age['Frequency'].sum():,}")
+print(f"\nAge Group Distribution:")
+for _, row in df_age.iterrows():
+    print(f"{row['Answer Categories']}: {row['%']:.1f}%")
+
+print(f"\nKey Insights:")
+print(f"• Majority group: {df_age.loc[df_age['%'].idxmax(), 'Answer Categories']} ({df_age['%'].max():.1f}%)")
+print(f"• Under 30: {df_age[df_age['Code'].isin([1.0, 2.0])]['%'].sum():.1f}%")
+print(f"• 30+: {df_age[df_age['Code'].isin([3.0, 4.0])]['%'].sum():.1f}%")
+print(f"• Median age group: {df_age.loc[df_age['%'].cumsum() >= 50, 'Answer Categories'].iloc[0]}")
+```
+
+## Gender Distribution
+
+```{python}
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create the DataFrame from the provided data
+data = get_NGS_table("GENDER2")
+
+df = pd.DataFrame(data)
+
+# Remove the "Total" row for analysis
+df = df[df['Answer Categories'] != 'Total']
+
+# Convert string numbers with commas to integers
+df['Frequency'] = df['Frequency'].str.replace(',', '').astype(int)
+df['Weighted Frequency'] = df['Weighted Frequency'].str.replace(',', '').astype(int)
+
+# Plotting
+plt.figure(figsize=(8, 4))
+
+# Frequency Plot
+plt.subplot(1, 2, 1)
+plt.bar(df['Answer Categories'], df['Frequency'], color=['blue', 'pink'])
+plt.title('Frequency Distribution by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Count')
+for i, v in enumerate(df['Frequency']):
+    plt.text(i, v + 100, f"{v:,}", ha='center')  # Format with commas
+
+# Percentage Plot
+plt.subplot(1, 2, 2)
+plt.pie(df['%'], labels=df['Answer Categories'], 
+        autopct='%1.1f%%', colors=['blue', 'pink'],
+        startangle=90)
+plt.title('Percentage Distribution by Gender')
+
+plt.tight_layout()
+plt.show()
+
+# Weighted Frequency Plot
+plt.figure(figsize=(5, 4))
+plt.bar(df['Answer Categories'], df['Weighted Frequency'], 
+        color=['blue', 'pink'])
+plt.title('Weighted Frequency Distribution by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Weighted Count')
+for i, v in enumerate(df['Weighted Frequency']):
+    plt.text(i, v + 5000, f"{v:,}", ha='center')  # Format with commas
+plt.show()
+
+# Display some statistics
+print("\nSummary Statistics:")
+print(f"Total Respondents: {df['Frequency'].sum():,}")
+print(f"Men+: {df[df['Answer Categories'] == 'Men+']['Frequency'].values[0]:,} "
+      f"({df[df['Answer Categories'] == 'Men+']['%'].values[0]}%)")
+print(f"Women+: {df[df['Answer Categories'] == 'Women+']['Frequency'].values[0]:,} "
+      f"({df[df['Answer Categories'] == 'Women+']['%'].values[0]}%)")
+print(f"\nWeighted Total: {df['Weighted Frequency'].sum():,}")
+print(f"Men+ (weighted): {df[df['Answer Categories'] == 'Men+']['Weighted Frequency'].values[0]:,}")
+print(f"Women+ (weighted): {df[df['Answer Categories'] == 'Women+']['Weighted Frequency'].values[0]:,}")
+```
+
+## Distribution by Citizenship Status
+
+```{python}
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create the DataFrame from the provided data
+data = get_NGS_table("CTZSHIPP")
+
+df = pd.DataFrame(data)
+
+# Remove the "Total" row for analysis
+df = df[df['Answer Categories'] != 'Total']
+
+# Convert string numbers with commas to integers
+df['Frequency'] = df['Frequency'].str.replace(',', '').astype(int)
+df['Weighted Frequency'] = df['Weighted Frequency'].str.replace(',', '').astype(int)
+
+# Plotting
+plt.figure(figsize=(14, 6))
+
+# Frequency Plot
+plt.subplot(1, 2, 1)
+bars = plt.bar(df['Answer Categories'], df['Frequency'], 
+               color=['green', 'lightgreen', 'blue', 'gray'])
+plt.title('Frequency Distribution by Citizenship Status')
+plt.xlabel('Citizenship Status')
+plt.ylabel('Count')
+plt.xticks(rotation=45, ha='right')
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2., height + 100,
+             f"{height:,}",
+             ha='center', va='bottom')
+
+# Percentage Plot
+plt.subplot(1, 2, 2)
+plt.pie(df['%'], labels=df['Answer Categories'], 
+        autopct='%1.1f%%', 
+        colors=['green', 'lightgreen', 'blue', 'gray'],
+        startangle=90)
+plt.title('Percentage Distribution by Citizenship Status')
+
+plt.tight_layout()
+plt.show()
+
+# Weighted Frequency Plot
+plt.figure(figsize=(5, 4))
+bars = plt.bar(df['Answer Categories'], df['Weighted Frequency'], 
+               color=['green', 'lightgreen', 'blue', 'gray'])
+plt.title('Weighted Frequency Distribution by Citizenship Status')
+plt.xlabel('Citizenship Status')
+plt.ylabel('Weighted Count')
+plt.xticks(rotation=45, ha='right')
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2., height + 5000,
+             f"{height:,}",
+             ha='center', va='bottom')
+plt.show()
+
+# Display some statistics
+print("\nSummary Statistics:")
+print(f"Total Respondents: {df['Frequency'].sum():,}")
+for idx, row in df.iterrows():
+    print(f"{row['Answer Categories']}: {row['Frequency']:,} ({row['%']}%)")
+    
+print(f"\nWeighted Total: {df['Weighted Frequency'].sum():,}")
+for idx, row in df.iterrows():
+    print(f"{row['Answer Categories']} (weighted): {row['Weighted Frequency']:,}")
+```
+
+## Education Level
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Get education tables (sample data structure)
+edu_level = get_NGS_table("CERTLEVP")
+
+# Create DataFrames
+df_level = pd.DataFrame(edu_level)
+
+# Plot education level distribution
+plt.figure(figsize=(8,4))
+plt.bar(df_level[:-1]['Answer Categories'], df_level[:-1]['%'], color=['#1f77b4', '#ff7f0e', '#2ca02c'])
+plt.title('Distribution of Education Levels (2020 Graduates)')
+plt.ylabel('Percentage (%)')
+plt.xticks(rotation=45)
+for i, v in enumerate(df_level[:-1]['%']):
+    plt.text(i, v+1, f"{v}%", ha='center')
+plt.show()
+
+field_of_study =  get_NGS_table("PGMCIPAP")
+df_field = pd.DataFrame(field_of_study)
+# Plot field of study distribution
+plt.figure(figsize=(8,4))
+plt.barh(df_field['Answer Categories'], df_field['%'], color='#9467bd')
+plt.title('Field of Study Distribution (2020 Graduates)')
+plt.xlabel('Percentage (%)')
+for i, v in enumerate(df_field['%']):
+    plt.text(v+0.5, i, f"{v}%", va='center')
+plt.tight_layout()
+plt.show()
+```
+
+## Inter-Regional Mobility of Graduates
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Geographic data from NGS 2020
+region_data = {
+    'Region': ['Atlantic provinces', 'Quebec', 'Ontario', 
+              'Western provinces, territories', 'Not stated'],
+    'REG_INST_Freq': [2685, 3647, 3146, 6660, None],
+    'REG_INST_Weighted': [29868, 115814, 250939, 136094, None],
+    'REG_INST_Pct': [5.6, 21.7, 47.1, 25.5, None],
+    'REG_RESP_Freq': [2279, 3549, 3497, 6588, 225],
+    'REG_RESP_Weighted': [27544, 114492, 242046, 143546, 5086],
+    'REG_RESP_Pct': [5.2, 21.5, 45.4, 26.9, 1.0]
+}
+
+df = pd.DataFrame(region_data)
+
+# 1. Comparison of Institution vs Residence Regions
+plt.figure(figsize=(6, 4))
+width = 0.35
+x = np.arange(len(df)-1)  # Exclude 'Not stated'
+
+plt.bar(x - width/2, df['REG_INST_Pct'][:-1], width, 
+        label='Institution Region', color='#1f77b4')
+plt.bar(x + width/2, df['REG_RESP_Pct'][:-1], width, 
+        label='Residence Region', color='#ff7f0e')
+
+plt.xlabel('Region')
+plt.ylabel('Percentage (%)')
+plt.title('Comparison of Institution vs Residence Regions (2020 Graduates)')
+plt.xticks(x, df['Region'][:-1], rotation=45)
+plt.legend()
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
+
+# 2. Weighted Institution Locations
+plt.figure(figsize=(8, 5))
+plt.pie(df['REG_INST_Weighted'][:-1], labels=df['Region'][:-1],
+        autopct='%1.1f%%', startangle=90,
+        colors=['#4C72B0', '#55A868', '#C44E52', '#8172B2'])
+plt.title('Distribution of Institution Regions (Weighted)')
+plt.show()
+
+# 3. Geographic Mobility Analysis
+mobility = pd.DataFrame({
+    'Movement': ['Stayed in same region', 'Moved between regions', 'Not stated'],
+    'Percentage': [68.3, 30.7, 1.0]  # Hypothetical values - actual mobility data would come from cross-tabulating REG_INST and REG_RESP
+})
+
+plt.figure(figsize=(6, 4))
+plt.barh(mobility['Movement'], mobility['Percentage'], color='#2ca02c')
+plt.title('Geographic Mobility After Graduation')
+plt.xlabel('Percentage (%)')
+for i, v in enumerate(mobility['Percentage']):
+    plt.text(v + 1, i, f"{v}%", va='center')
+plt.tight_layout()
+plt.show()
+
+# 4. Regional Analysis Table
+print("Regional Distribution of Graduates:")
+print(f"{'Region':<25} {'Institution %':>12} {'Residence %':>12} {'Difference':>10}")
+print("-"*60)
+for idx, row in df.iterrows():
+    if pd.notna(row['REG_INST_Pct']):
+        diff = row['REG_RESP_Pct'] - row['REG_INST_Pct']
+        print(f"{row['Region']:<25} {row['REG_INST_Pct']:>11.1f}% {row['REG_RESP_Pct']:>11.1f}% {diff:>9.1f}%")
+
+# 5. Key Findings
+print("\nKey Geographic Findings:")
+print("- Ontario has the highest concentration of institutions (47.1%) and residents (45.4%)")
+print("- Western provinces show net immigration (+1.4% difference between residence and institution)")
+print("- Atlantic provinces show slight outmigration (-0.4% difference)")
+print("- Quebec maintains stable proportions (21.7% institutions vs 21.5% residence)")
+print("- 1% of respondents didn't state their residence location")
+
+# 6. Advanced Visualization: Sankey Diagram (conceptual)
+from pySankey.sankey import sankey
+
+# Sample migration flows (hypothetical example)
+flows = pd.DataFrame({
+    'Source': ['Atlantic', 'Quebec', 'Ontario', 'West']*4,
+    'Target': ['Atlantic']*4 + ['Quebec']*4 + ['Ontario']*4 + ['West']*4,
+    'Value': [85,5,5,5,  10,75,10,5,  5,10,80,5,  5,5,10,80]
+})
+
+plt.figure(figsize=(8,5))
+sankey(flows['Source'], flows['Target'], flows['Value'],
+       aspect=20, fontsize=12)
+plt.title('Inter-Regional Mobility of Graduates', pad=20)
+plt.show()
+```
+
+## Field of Study vs. Labor Outcomes
+
+```{python}  import matplotlib.pyplot as plt}
+ import seabornas sns
+ #1.EmploymentRatebyFieldofStudy
+ employment_by_field =df.groupby('PGMCIPAP')['LFSTATP'].apply(
+ lambda x:(x == 1).mean()* 100 #%employed
+ ).reset_index()
+ plt.figure(figsize=(8,4))
+ ax1= sns.barplot(x='PGMCIPAP', y='LFSTATP',data=employment_by_field,palette='Blues_d')
+ ax1.set_title('EmploymentRatesbyFieldofStudy(2023)',fontsize=14,pad=20)
+ ax1.set_xlabel('Field ofStudy(AggregatedCIP2021Categories)',fontsize=12)
+ ax1.set_ylabel('PercentageEmployed(%)',fontsize=12)
+ #Get the actualnumberofcategoriesfromthedata
+ num_categories= len(employment_by_field['PGMCIPAP'].unique())
+ #Createlabels- eitheraddthemissinglabelorusetheactualcategorynamesfrommydata
+ labels = [
+ 'Education', 'Arts/Humanities', 'SocialSciences/Law',
+ 'Business/PublicAdmin', 'Physical/LifeSciences',
+ 'Math/Computer Science', 'Engineering/Trades',
+ 'Health', 'Other','Unknown' #Added'Unknown'asthe10thcategory
+ ][:num_categories] #Thisensuresweonlyuseas manylabelsaswehavecategories
+ ax1.set_xticklabels(labels,rotation=45,ha='right')
+ plt.tight_layout()
+
+```
+
+# Linear Regression Analysis with NGS Data
+
+```{python}
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import statsmodels.api as sm
+
+# Load the data
+df = pd.read_csv('ngs2020.csv')
+
+# Explore the data
+print(df.head())
+print(df.info())
+
+# Check for missing values (coded as 6, 96, 99 etc. based on NGS coding)
+# Replace these with NaN
+missing_codes = [6, 96, 99, 9]
+df = df.replace(missing_codes, np.nan)
+
+# Identify your target variable (you'll need to confirm which column is income)
+# For example, if 'PERSINCP' is personal income:
+target = 'PERSINCP'
+
+# Select potential predictors (you'll need to verify these based on codebook)
+predictors = [
+    'GENDER2',        # Gender
+    'EDU_010',        # Education level
+    'EDU_P020',       # Additional education info
+    'CTZSHIPP',       # Citizenship status
+    'REG_INST',       # Region of institution
+    'CERTLEVP',       # Certificate level
+    'PGMCIPAP',       # Program category
+    'MS_P01',         # Marital status
+    'VISBMINP',       # Visible minority status
+    'DDIS_FL'         # Disability flag
+    # Add more based on your research question
+]
+
+# Create a clean dataset
+df_clean = df[[target] + predictors].dropna()
+
+# Convert categorical variables to dummy variables if needed
+df_clean = pd.get_dummies(df_clean, columns=['GENDER2', 'CTZSHIPP', 'REG_INST'], drop_first=True)
+```
+
+## Statsmodels
+
+```{python}
+# Split into features and target
+X = df_clean.drop(target, axis=1)
+y = df_clean[target]
+
+# Check for non-numeric columns and handle them
+# Convert categorical variables to numeric using one-hot encoding
+X = pd.get_dummies(X, drop_first=True)
+
+# Check for and handle missing values
+# Use only numeric columns for mean calculation
+numeric_cols = X.select_dtypes(include=['number']).columns
+X[numeric_cols] = X[numeric_cols].fillna(X[numeric_cols].mean())
+y = y.fillna(y.mean())  # Fill missing values in target if any
+
+# Ensure all data is numeric - force conversion and handle errors
+for col in X.columns:
+    X[col] = pd.to_numeric(X[col], errors='coerce')
+y = pd.to_numeric(y, errors='coerce')
+
+# Drop any remaining problematic rows with NaN values
+mask = ~(X.isna().any(axis=1) | pd.isna(y))
+X = X[mask]
+y = y[mask]
+
+# Convert to float64 to ensure compatibility with sklearn
+X = X.astype(float)
+y = y.astype(float)
+
+# Split into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and fit the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+print("R-squared:", round(r2_score(y_test, y_pred),3))
+print("RMSE:", round(np.sqrt(mean_squared_error(y_test, y_pred)),3))
+
+# For more detailed statistics (p-values etc.)
+X_with_const = sm.add_constant(X_train)
+sm_model = sm.OLS(y_train, X_with_const).fit()
+print(sm_model.summary())
+
+```
+
+# Insights and Recommendations for University Strategic Planning
+
+::: fancy-background
+Based on the National Graduates Survey (Class of 2020) data collected in 2023, I can provide strategic recommendations for university planning. The dataset contains 16,138 records with 114 variables covering education, student loans, employment outcomes, and COVID-19 impacts.
+
+## 1. Program Development and Delivery
+
+**Insights:** - The data includes variables on program level (CERTLEVP), field of study (PGMCIPAP), and delivery mode (PGM_P401 for online/distance education) - Work placements (PGM_P100, PGM_P111) and entrepreneurial skills development (PGM_280A-F) are tracked - Student motivations for program selection (PGM_415) provide insight into decision factors
+
+**Recommendations:** - Analyze which programs have the highest satisfaction rates (PGM_430 - would choose same field again) - Expand programs with strong employment outcomes (using LFSTATP, JOBQLEVP variables) - Develop more work-integrated learning opportunities based on placement outcomes - Enhance entrepreneurship education based on PGM_280A-F metrics - Optimize online/distance education offerings based on PGM_P401 outcomes
+
+## 2. Enrollment and Marketing Strategy
+
+**Insights:** - Data on institution choice factors (PGM_410) reveals what drives student decisions - Regional data for institutions (REG_INST) and student residence (REG_RESP) shows mobility patterns - Demographics (GRADAGEP, GENDER2, CTZSHIPP, VISBMINP) provide population insights
+
+**Recommendations:** - Target marketing messages based on top factors influencing institution choice (PGM_410) - Develop regional recruitment strategies based on REG_INST and REG_RESP patterns - Create targeted outreach for underrepresented demographic groups - Highlight graduate employment outcomes in marketing materials - Emphasize work placement opportunities and entrepreneurial skill development
+
+## 3. Student Financial Support
+
+**Insights:** - Comprehensive student loan data (STULOANS, OWESLGD, OWEGVIN) - Information on funding sources (SRCFUND, STL_170A-N) - Scholarship information (SCHOLARP)
+
+**Recommendations:** - Enhance financial aid packages based on debt load analysis - Develop targeted scholarship programs for high-need demographics - Create financial literacy programs based on loan repayment patterns - Establish emergency funding for students at risk of non-completion - Partner with employers for work-study and tuition assistance programs
+
+## 4. COVID-19 Response and Resilience Planning
+
+**Insights:** - Data on COVID-19 impacts on program completion (COV_010) - Effects on further education plans (COV_070) - Employment impacts (COV_080)
+
+**Recommendations:** - Develop contingency plans for future disruptions based on COVID-19 impact data - Create flexible program completion pathways for students facing external challenges - Enhance career services to address employment disruptions - Build robust online/hybrid learning infrastructure - Establish student support services focused on resilience and adaptability
+
+## 5. Career Services and Alumni Relations
+
+**Insights:** - Employment status data (LFSTATP) - Job quality metrics (JOBQLEVP, JOBQLGRD) - Income information (JOBINCP, PERSINCP)
+
+**Recommendations:** - Align career services with employment outcome data by program - Develop targeted career preparation for programs with weaker outcomes - Create alumni mentorship networks based on successful graduate pathways - Establish employer partnerships in high-placement industries - Track and promote ROI metrics for different programs based on income outcomes
+:::
+
+::: fancy-background
+# Conclusion
+:::
+
+::: fancy-background
+This comprehensive dataset provides valuable insights for strategic university planning across multiple domains. By analyzing program effectiveness, student decision factors, financial needs, and employment outcomes, the university can make data-driven decisions to:
+
+1.  Optimize program offerings and delivery methods
+2.  Target marketing and recruitment efforts more effectively
+3.  Enhance student financial support systems
+4.  Build institutional resilience against future disruptions
+5.  Strengthen career preparation and alumni connections
+
+For deeper analysis, I recommend using Python packages like pandas for data manipulation, scikit-learn for predictive modeling, and matplotlib/seaborn for visualization to extract more nuanced patterns from this rich dataset.
+:::

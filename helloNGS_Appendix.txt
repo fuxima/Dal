@@ -1,0 +1,2198 @@
+---
+title: "The Graduate Journey: Education and Labour Market Realities in Canada"
+author:
+    - name: "Fuxi Ma <fuxi.ma@outlook.com>"
+format: 
+  html:
+    toc: true
+    toc-depth: 5  
+    toc-expand: true      
+    highlight-on-scroll: true  
+    toc-location: right    
+    number-sections: true
+  pdf:
+    toc: true
+    toc-depth: 5
+    number-sections: true
+    documentclass: article
+    papersize: a4
+    geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
+    linestretch: 1.25
+    fontsize: 11pt
+    urlcolor: blue
+    linkcolor: red
+    include-before-body: |
+      \clearpage
+      \thispagestyle{empty}
+      \tableofcontents
+      \clearpage
+    header-includes:
+      - \usepackage{titling}
+      - \pretitle{\begin{center}\vspace*{2cm}\Huge}
+      - \posttitle{\end{center}\clearpage}
+editor: visual
+output: html_document
+execute: 
+  cache: true
+jupyter: python3
+---
+
+## Appendix
+
+### Code for Extracting NGS 2020 Survey Data Tables
+
+```{python}
+'''
+Extracting NGS 2020 Survey Data Tables
+NGS2020 - Definitions.pdf
+'''
+
+'''
+Strengths:
+Complete Implementation: You've included all 121 tables from the NGS 2020 survey with detailed metadata and data values.
+
+Well-Structured: The code is organized into a class (NGS2020CompleteTables) with clear methods for loading, accessing, and formatting tables.
+
+Good Documentation: The file has clear docstrings and comments explaining the functionality.
+
+Useful Features:
+
+Table lookup by name
+
+Metadata display
+
+Excel export capability
+
+Example usage in __main__
+
+Potential Improvements:
+Data Validation: Consider adding validation for table names and data formats.
+
+Error Handling: Could enhance error messages with more specific details.
+
+Performance: For very large datasets, you might want to optimize the data loading.
+
+Testing: Adding unit tests would ensure reliability as the code evolves.
+
+Example Usage:
+Your example in the __main__ block demonstrates how to:
+
+List available tables
+
+Access a specific table
+
+Display table data
+
+Save to Excel
+
+Overall:
+This is a well-implemented, comprehensive solution for working with NGS 2020 survey data. The code is clean, functional, and appears to accurately represent the survey data structure. The only suggestions would be the minor improvements mentioned above if you plan to expand or maintain this codebase further.
+'''
+
+'''
+Notable Variables:
+Program-Related Variables:
+
+CERTLEVP: Level of study (College, Bachelor’s, Master’s/Doctorate).
+
+PGMCIPAP: Field of study (e.g., Education, Health, Business).
+
+PGM_P100: Work placement during the program (42.5% had placements).
+
+PGM_290: Worked during the program (74.9% worked).
+
+COVID-19 Impact:
+
+COV_010: Program completion delayed due to COVID-19 (14.2%).
+
+COV_080: Employment plans affected by COVID-19 (53.8%).
+
+Post-Graduation Activities:
+
+EDU_010: Further education after the 2020 program (32.4% pursued additional programs).
+
+LFSTATP: Labour force status (86.9% employed, 5.9% unemployed).
+
+Funding and Debt:
+
+STULOANS: Received government student loans (44.2%).
+
+OWESLGD: Debt size at graduation (e.g., 14.0% owed $10,000–$25,000).
+
+SCHOLARP: Scholarships/awards received (13.5% received <$5,000).
+
+Demographics:
+
+GENDER2: Gender distribution (43.3% men+, 56.7% women+).
+
+VISBMINP: Visible minority status (43.7% identified as visible minority).
+
+PERSINCP: Personal income in 2022 (20.0% earned <$30,000).
+'''
+
+import pandas as pd
+
+class NGS2020CompleteTables:
+    def __init__(self):
+        self.tables = self._load_all_tables()
+        
+    def _load_all_tables(self):
+        """Load all tables from the NGS 2020 survey"""
+        # This would contain all 100+ tables from the PDF
+        # Here's a representative sample - in practice this would include ALL tables
+        return {
+            # Page 5-6 Tables
+            'CERTLEVP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '6',
+                    'concept': '2020 Program - Level of study - Grouping',
+                    'universe': 'All respondents',
+                    'note': 'The answer categories have been regrouped for the PUMF'
+                },
+                data=[
+                    ['College', '1', '4,796', '222,905', '41.8'],
+                    ['Bachelor\'s', '2', '6,752', '239,206', '44.9'],
+                    ['Master\'s / Doctorate', '3', '4,589', '70,584', '13.2'],
+                    ['Not stated', '9', '1', '20', '0.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'REG_INST': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '7',
+                    'concept': 'Region of postsecondary institution',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Atlantic provinces', '1', '2,685', '29,868', '5.6'],
+                    ['Quebec', '2', '3,647', '115,814', '21.7'],
+                    ['Ontario', '3', '3,146', '250,939', '47.1'],
+                    ['Western provinces, territories', '4', '6,660', '136,094', '25.5'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            # Page 7-8 Tables
+            'PGM_P034': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '11',
+                    'question_text': 'Were you enrolled as a full-time or part-time student?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Full-time student', '1', '12,935', '449,391', '84.4'],
+                    ['Part-time student', '2', '3,168', '82,652', '15.5'],
+                    ['Not stated', '9', '35', '672', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_P100': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '13',
+                    'question_text': 'Did you have any work placements as part of your program?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '6,906', '226,232', '42.5'],
+                    ['No', '2', '9,215', '305,816', '57.4'],
+                    ['Not stated', '9', '17', '666', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            # Page 8-9 Tables (Entrepreneurial Activities)
+            'PGM_P111': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '14',
+                    'question_text': 'Which best describes your work placement?',
+                    'universe': 'PGM_P100 = 1 (Had work placement)'
+                },
+                data=[
+                    ['Co-op program', '1', '1,453', '62,012', '11.6'],
+                    ['Internship/practicum', '2', '4,871', '144,297', '27.1'],
+                    ['Other', '3', '560', '19,285', '3.6'],
+                    ['Valid skip', '6', '9,215', '305,816', '57.4'],
+                    ['Not stated', '9', '39', '1,303', '0.2'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_280A': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '15',
+                    'question_text': 'Did you start a business during your program?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '540', '16,879', '3.2'],
+                    ['No', '2', '15,506', '512,835', '96.3'],
+                    ['Not stated', '9', '92', '3,000', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_280B': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '16',
+                    'question_text': 'Did you complete entrepreneurship courses?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '1,134', '38,601', '7.2'],
+                    ['No', '2', '14,912', '491,113', '92.2'],
+                    ['Not stated', '9', '92', '3,000', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 9-10 Tables (Continued)
+            'PGM_280C': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '17',
+                    'question_text': 'Did you participate in business plan competitions?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '954', '30,728', '5.8'],
+                    ['No', '2', '15,092', '498,986', '93.7'],
+                    ['Not stated', '9', '92', '3,000', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_280D': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '18',
+                    'question_text': 'Did you visit an entrepreneurship center?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '482', '16,220', '3.0'],
+                    ['No', '2', '15,564', '513,494', '96.4'],
+                    ['Not stated', '9', '92', '3,000', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_280E': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '19',
+                    'question_text': 'Did you work on an entrepreneurship project?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '465', '13,322', '2.5'],
+                    ['No', '2', '15,581', '516,393', '96.9'],
+                    ['Not stated', '9', '92', '3,000', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 10-11 Tables (Continued)
+            'PGM_280F': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '20',
+                    'question_text': 'Did you do none of these entrepreneurial activities?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '13,751', '453,137', '85.1'],
+                    ['No', '2', '2,295', '76,578', '14.4'],
+                    ['Not stated', '9', '92', '3,000', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_290': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '21',
+                    'question_text': 'Did you work while enrolled in your program?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '12,164', '399,016', '74.9'],
+                    ['No', '2', '3,961', '133,458', '25.1'],
+                    ['Not stated', '9', '13', '240', '0.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_350': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '22',
+                    'question_text': 'Did you volunteer during your program?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '6,794', '206,685', '38.8'],
+                    ['No', '2', '9,325', '325,352', '61.1'],
+                    ['Not stated', '9', '19', '677', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 11-12 Tables (Program Characteristics)
+            'PGM_380': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '23',
+                    'question_text': 'Did program include components outside Canada?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '765', '23,282', '4.4'],
+                    ['No', '2', '15,355', '508,698', '95.5'],
+                    ['Not stated', '9', '18', '734', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_P401': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '24',
+                    'question_text': 'How much was taken through online/distance education?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['None', '1', '10,022', '320,582', '60.2'],
+                    ['Less than 50%', '2', '4,161', '154,455', '29.0'],
+                    ['50-100%', '3', '1,942', '57,046', '10.7'],
+                    ['Not stated', '9', '13', '630', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_410': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '25',
+                    'question_text': 'Most important factor in choice of institution?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Reputation', '01', '3,111', '108,898', '20.4'],
+                    ['Program availability', '02', '5,041', '167,562', '31.5'],
+                    ['Location', '03', '3,728', '114,515', '21.5'],
+                    ['Tuition/financial aid', '04', '1,223', '33,268', '6.2'],
+                    ['Recommendation', '05', '828', '30,541', '5.7'],
+                    ['Online availability', '06', '462', '12,947', '2.4'],
+                    ['Language', '07', '146', '5,076', '1.0'],
+                    ['Work placements', '08', '619', '28,154', '5.3'],
+                    ['Other', '09', '961', '30,717', '5.8'],
+                    ['Not stated', '99', '19', '1,036', '0.2'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 12-13 Tables (Continued)
+            'PGM_415': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '27',
+                    'question_text': 'Most important factor in choice of program?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Employment opportunities', '01', '3,486', '116,014', '21.8'],
+                    ['Field of study', '02', '3,823', '119,280', '22.4'],
+                    ['Personal interest', '03', '7,344', '242,426', '45.5'],
+                    ['Reputation', '04', '453', '16,029', '3.0'],
+                    ['Recommendation', '05', '516', '19,883', '3.7'],
+                    ['Other', '06', '471', '17,026', '3.2'],
+                    ['Not stated', '99', '45', '2,055', '0.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PGM_430': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '29',
+                    'question_text': 'Would you choose same field of study again?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '11,922', '374,599', '70.3'],
+                    ['No', '2', '4,195', '157,273', '29.5'],
+                    ['Not stated', '9', '21', '842', '0.2'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            # Page 14-15 Tables (COVID Impact)
+            'COV_010': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '30',
+                    'question_text': 'Was program completion delayed by COVID-19?',
+                    'universe': 'PGML_030A > 2020 or (PGML_030A = 2020 and PGML_030B > 2)'
+                },
+                data=[
+                    ['Yes', '1', '2,295', '75,771', '14.2'],
+                    ['No', '2', '11,544', '400,670', '75.2'],
+                    ['Valid skip', '6', '2,282', '55,436', '10.4'],
+                    ['Not stated', '9', '17', '838', '0.2'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 15-16 Tables (Post-Program Education)
+            'EDU_010': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '33',
+                    'concept': 'Post-2020 education participation',
+                    'question': 'Taken other certificates/diplomas since 2020?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '4,717', '172,437', '32.4'],
+                    ['No', '2', '11,404', '359,684', '67.5'],
+                    ['Not stated', '9', '17', '593', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'EDU_P020': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '34',
+                    'concept': 'Number of post-2020 programs',
+                    'question': 'How many other programs taken?',
+                    'universe': 'EDU_010 = 1'
+                },
+                data=[
+                    ['One', '1', '4,070', '149,245', '28.0'],
+                    ['Two or more', '2', '623', '22,449', '4.2'],
+                    ['Valid skip', '6', '11,404', '359,684', '67.5'],
+                    ['Not stated', '9', '41', '1,336', '0.3'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 16-17 Tables (Student Loans)
+            'STL_010': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '36',
+                    'concept': 'Applied for government student loans',
+                    'question': 'Ever applied for government-sponsored student loan?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '7,636', '244,318', '45.9'],
+                    ['No', '2', '8,487', '288,155', '54.1'],
+                    ['Not stated', '9', '15', '240', '0.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_020': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '37',
+                    'concept': 'Loan applications approved',
+                    'question': 'Were any applications approved?',
+                    'universe': 'STL_010 = 1'
+                },
+                data=[
+                    ['Yes', '1', '7,349', '235,419', '44.2'],
+                    ['No', '2', '274', '8,353', '1.6'],
+                    ['Valid skip', '6', '8,487', '288,155', '54.1'],
+                    ['Not stated', '9', '28', '786', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STULOANS': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '38',
+                    'concept': 'Received government student loans',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '7,349', '235,419', '44.2'],
+                    ['No', '2', '8,761', '296,509', '55.7'],
+                    ['Not stated', '9', '28', '786', '0.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_030': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '39',
+                    'concept': 'Reason for not applying for loans',
+                    'question': 'Main reason never applied for loans?',
+                    'universe': 'STL_010 = 2'
+                },
+                data=[
+                    ['Never needed', '01', '4,533', '139,855', '26.3'],
+                    ['Thought would not qualify', '02', '1,201', '39,295', '7.4'],
+                    ['Did not know how', '03', '516', '25,480', '4.8'],
+                    ['Residency requirements', '04', '818', '35,899', '6.7'],
+                    ['Not willing to borrow', '05', '863', '25,507', '4.8'],
+                    ['Other', '06', '532', '20,186', '3.8'],
+                    ['Valid skip', '96', '7,623', '243,773', '45.8'],
+                    ['Not stated', '99', '52', '2,720', '0.5'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 18-21 Tables (Loan Details)
+            'OWESLGD': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '41',
+                    'concept': 'Graduation debt size (government loans)',
+                    'universe': 'STL_020 = 1'
+                },
+                data=[
+                    ['$0', '0', '1,264', '35,069', '6.6'],
+                    ['<$5,000', '1', '479', '18,351', '3.4'],
+                    ['$5,000-$10,000', '2', '938', '34,733', '6.5'],
+                    ['$10,000-$25,000', '3', '2,227', '74,490', '14.0'],
+                    ['$25,000+', '4', '2,188', '63,848', '12.0'],
+                    ['Valid skip', '6', '8,761', '296,509', '55.7'],
+                    ['Not stated', '9', '281', '9,714', '1.8'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'OWEGVIN': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '42',
+                    'concept': 'Current debt size (government loans)',
+                    'universe': 'STL_020 = 1'
+                },
+                data=[
+                    ['$0', '0', '2,316', '74,752', '14.0'],
+                    ['<$5,000', '1', '543', '18,718', '3.5'],
+                    ['$5,000-$10,000', '2', '879', '30,747', '5.8'],
+                    ['$10,000-$25,000', '3', '1,809', '59,302', '11.1'],
+                    ['$25,000+', '4', '1,560', '42,665', '8.0'],
+                    ['Valid skip', '6', '8,761', '296,509', '55.7'],
+                    ['Not stated', '9', '270', '10,022', '1.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_080': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '43',
+                    'concept': 'Received loan forgiveness',
+                    'question': 'Received loan remission in first 6 months?',
+                    'universe': 'STL_010 = 1 and STL_020 = 1 and STL_060 > 0'
+                },
+                data=[
+                    ['Yes', '1', '809', '24,212', '4.5'],
+                    ['No', '2', '4,898', '162,683', '30.5'],
+                    ['Valid skip', '6', '10,278', '340,506', '63.9'],
+                    ['Not stated', '9', '153', '5,313', '1.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 22-26 Tables (Funding Sources)
+            'STL_160B': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '50',
+                    'concept': 'Used RESP for funding',
+                    'question': 'Used RESP for postsecondary education?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '3,139', '102,864', '19.3'],
+                    ['No', '2', '12,622', '414,496', '77.8'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_160C': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '51',
+                    'concept': 'Used government grants/bursaries',
+                    'question': 'Used government grants/bursaries?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '3,714', '122,808', '23.1'],
+                    ['No', '2', '12,047', '394,551', '74.1'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_160F': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '54',
+                    'concept': 'Used employment earnings/savings',
+                    'question': 'Used employment earnings/savings?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '10,434', '334,259', '62.7'],
+                    ['No', '2', '5,327', '183,100', '34.4'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+
+            # Page 31-34 Tables (Debt and Income)
+            'RESPP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '74',
+                    'concept': 'Total RESP amount received',
+                    'universe': 'STL_160B = 1'
+                },
+                data=[
+                    ['<$5,000', '1', '374', '11,771', '2.2'],
+                    ['$5,000-$10,000', '2', '495', '16,180', '3.0'],
+                    ['$10,000-$25,000', '3', '1,153', '37,952', '7.1'],
+                    ['$25,000+', '4', '691', '23,547', '4.4'],
+                    ['Valid skip', '6', '12,622', '414,496', '77.8'],
+                    ['Not stated', '9', '803', '28,768', '5.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'DBTOTGRD': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '76',
+                    'concept': 'Non-government loan debt at graduation',
+                    'universe': 'Respondents with non-government loans'
+                },
+                data=[
+                    ['$0', '0', '784', '22,582', '4.2'],
+                    ['<$5,000', '1', '488', '17,039', '3.2'],
+                    ['$5,000-$10,000', '2', '624', '19,081', '3.6'],
+                    ['$10,000-$25,000', '3', '1,112', '41,329', '7.8'],
+                    ['$25,000+', '4', '978', '30,941', '5.8'],
+                    ['Valid skip', '6', '11,441', '374,416', '70.3'],
+                    ['Not stated', '9', '711', '27,326', '5.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'SCHOLARP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '80',
+                    'concept': 'Total scholarships/awards received',
+                    'universe': 'STL_160E = 1'
+                },
+                data=[
+                    ['<$5,000', '1', '2,368', '71,834', '13.5'],
+                    ['$5,000-$10,000', '2', '1,004', '27,247', '5.1'],
+                    ['$10,000-$25,000', '3', '973', '21,924', '4.1'],
+                    ['$25,000+', '4', '1,048', '18,985', '3.6'],
+                    ['Valid skip', '6', '10,004', '367,740', '69.0'],
+                    ['Not stated', '9', '741', '24,983', '4.7'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            # Page 35-38 Tables (Employment)
+            'LFSTATP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '82',
+                    'concept': 'Labour force status',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Employed', '1', '14,129', '462,715', '86.9'],
+                    ['Unemployed', '2', '829', '31,453', '5.9'],
+                    ['Not in labour force', '3', '1,147', '37,447', '7.0'],
+                    ['Not stated', '9', '33', '1,099', '0.2'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'LMA6_13A': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '98',
+                    'question_text': 'Satisfaction with overall job',
+                    'universe': 'LMA3_01 = 1'
+                },
+                data=[
+                    ['Very satisfied', '1', '4,295', '136,591', '25.6'],
+                    ['Satisfied', '2', '6,570', '214,844', '40.3'],
+                    ['Neither', '3', '1,414', '48,534', '9.1'],
+                    ['Dissatisfied', '4', '704', '22,855', '4.3'],
+                    ['Very dissatisfied', '5', '162', '5,980', '1.1'],
+                    ['Valid skip', '6', '2,805', '95,871', '18.0'],
+                    ['Not stated', '9', '188', '8,040', '1.5'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+    # Page 39 Tables (Job Qualifications)
+    'JOBQLEVP': self._create_table(
+        meta={
+            'length': '1.0', 'position': '93',
+            'concept': 'Education required for current job',
+            'universe': 'Employed respondents'
+        },
+        data=[
+            ['No formal requirement', '0', '2,460', '93,823', '17.6'],
+            ['College level', '1', '2,248', '93,495', '17.6'],
+            ["Bachelor's level", '2', '5,740', '171,913', '32.3'],
+            ['Graduate level', '3', '2,088', '46,118', '8.7'],
+            ['Valid skip', '6', '2,697', '92,881', '17.4'],
+            ['Not stated', '9', '905', '34,484', '6.5'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'JOBQLGRD': self._create_table(
+        meta={
+            'length': '1.0', 'position': '94',
+            'concept': 'Qualification vs 2020 program',
+            'universe': 'Employed respondents'
+        },
+        data=[
+            ['Overqualified', '1', '6,154', '193,324', '36.3'],
+            ['Properly qualified', '2', '6,108', '196,769', '36.9'],
+            ['Underqualified', '3', '687', '31,705', '6.0'],
+            ['Valid skip', '6', '2,639', '90,706', '17.0'],
+            ['Not stated', '9', '550', '20,210', '3.8'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 40 Tables (Continued)
+    'JOBQLINT': self._create_table(
+        meta={
+            'length': '1.0', 'position': '95',
+            'concept': 'Qualification vs current education',
+            'universe': 'Respondents with job'
+        },
+        data=[
+            ['More than required', '1', '6,497', '204,084', '38.3'],
+            ['Same as required', '2', '5,987', '191,709', '36.0'],
+            ['Less than required', '3', '649', '33,131', '6.2'],
+            ['Valid skip', '6', '2,702', '92,945', '17.4'],
+            ['Not stated', '9', '303', '10,844', '2.0'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'LMAG_11': self._create_table(
+        meta={
+            'length': '1.0', 'position': '96',
+            'concept': 'Job relatedness to program',
+            'question': 'How closely is job related to 2020 program?',
+            'universe': 'Employed respondents'
+        },
+        data=[
+            ['Closely related', '1', '8,817', '264,246', '49.6'],
+            ['Somewhat related', '2', '2,928', '101,160', '19.0'],
+            ['Not related', '3', '2,218', '90,024', '16.9'],
+            ['Valid skip', '6', '2,005', '69,827', '13.1'],
+            ['Not stated', '9', '170', '7,457', '1.4'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 41 Tables (Job Satisfaction)
+    'LMAG_12': self._create_table(
+        meta={
+            'length': '1.0', 'position': '97',
+            'concept': 'Self-assessed qualification',
+            'question': 'How qualified were you for this job?',
+            'universe': 'Employees'
+        },
+        data=[
+            ['Overqualified', '1', '3,037', '101,591', '19.1'],
+            ['Properly qualified', '2', '9,879', '319,178', '59.9'],
+            ['Underqualified', '3', '230', '7,810', '1.5'],
+            ['Valid skip', '6', '2,805', '95,871', '18.0'],
+            ['Not stated', '9', '187', '8,264', '1.6'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'LMAG_13A': self._create_table(
+        meta={
+            'length': '1.0', 'position': '98',
+            'concept': 'Overall job satisfaction',
+            'question': 'Satisfaction with overall job',
+            'universe': 'Employees'
+        },
+        data=[
+            ['Very satisfied', '1', '4,295', '136,591', '25.6'],
+            ['Satisfied', '2', '6,570', '214,844', '40.3'],
+            ['Neutral', '3', '1,414', '48,534', '9.1'],
+            ['Dissatisfied', '4', '704', '22,855', '4.3'],
+            ['Very dissatisfied', '5', '162', '5,980', '1.1'],
+            ['Valid skip', '6', '2,805', '95,871', '18.0'],
+            ['Not stated', '9', '188', '8,040', '1.5'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'LMAG_13B': self._create_table(
+        meta={
+            'length': '1.0', 'position': '99',
+            'concept': 'Salary satisfaction',
+            'question': 'Satisfaction with wage/salary',
+            'universe': 'Employees'
+        },
+        data=[
+            ['Very satisfied', '1', '2,108', '65,443', '12.3'],
+            ['Satisfied', '2', '5,321', '170,475', '32.0'],
+            ['Neutral', '3', '2,404', '82,605', '15.5'],
+            ['Dissatisfied', '4', '2,594', '87,464', '16.4'],
+            ['Very dissatisfied', '5', '714', '22,764', '4.3'],
+            ['Valid skip', '6', '2,805', '95,871', '18.0'],
+            ['Not stated', '9', '192', '8,093', '1.5'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'LMAG_13C': self._create_table(
+        meta={
+            'length': '1.0', 'position': '100',
+            'concept': 'Job security satisfaction',
+            'question': 'Satisfaction with job security',
+            'universe': 'Employees'
+        },
+        data=[
+            ['Very satisfied', '1', '4,566', '143,072', '26.9'],
+            ['Satisfied', '2', '5,714', '190,258', '35.7'],
+            ['Neutral', '3', '1,647', '56,611', '10.6'],
+            ['Dissatisfied', '4', '902', '29,382', '5.5'],
+            ['Very dissatisfied', '5', '311', '9,318', '1.7'],
+            ['Valid skip', '6', '2,805', '95,871', '18.0'],
+            ['Not stated', '9', '193', '8,201', '1.5'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 42 Tables (Income & First Job)
+    'JOBINCP': self._create_table(
+        meta={
+            'length': '2.0', 'position': '101',
+            'concept': 'Annual salary range',
+            'universe': 'Employed respondents'
+        },
+        data=[
+            ['Under $30,000', '01', '1,107', '44,319', '8.3'],
+            ['$30,000-$49,999', '02', '2,767', '109,945', '20.6'],
+            ['$50,000-$69,999', '03', '3,923', '131,194', '24.6'],
+            ['$70,000-$89,999', '04', '2,645', '75,066', '14.1'],
+            ['$90,000+', '05', '2,230', '52,116', '9.8'],
+            ['Valid skip', '96', '2,800', '95,806', '18.0'],
+            ['Not stated', '99', '666', '24,268', '4.6'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'LMAG_15': self._create_table(
+        meta={
+            'length': '1.0', 'position': '103',
+            'concept': 'First job after graduation',
+            'question': 'Is this your first job after graduation?',
+            'universe': 'Employees'
+        },
+        data=[
+            ['Yes', '1', '6,127', '190,938', '35.8'],
+            ['No', '2', '6,996', '236,825', '44.5'],
+            ['Valid skip', '6', '2,805', '95,871', '18.0'],
+            ['Not stated', '9', '210', '9,080', '1.7'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 43 Tables (Post-Grad Job History)
+    'AFT_P010': self._create_table(
+        meta={
+            'length': '1.0', 'position': '104',
+            'concept': 'Number of jobs since graduation',
+            'question': 'How many jobs since graduation?',
+            'universe': 'Not in first job'
+        },
+        data=[
+            ['0', '0', '1,184', '35,038', '6.6'],
+            ['1', '1', '3,585', '120,717', '22.7'],
+            ['2', '2', '2,673', '91,801', '17.2'],
+            ['3', '3', '1,336', '47,063', '8.8'],
+            ['4+', '4', '925', '33,314', '6.3'],
+            ['Valid skip', '6', '6,127', '190,938', '35.8'],
+            ['Not stated', '9', '308', '13,843', '2.6'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'AFT_P020': self._create_table(
+        meta={
+            'length': '1.0', 'position': '105',
+            'concept': 'Time to first job',
+            'question': 'How long after graduation to first job?',
+            'universe': 'Not in first job'
+        },
+        data=[
+            ['Already employed', '1', '3,172', '109,030', '20.5'],
+            ['<6 months', '2', '3,756', '124,406', '23.4'],
+            ['6-12 months', '3', '840', '30,518', '5.7'],
+            ['1+ years', '4', '731', '28,237', '5.3'],
+            ['Valid skip', '6', '7,619', '239,819', '45.0'],
+            ['Not stated', '9', '20', '703', '0.1'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 44 Tables (First Job Characteristics)
+    'AFT_P040': self._create_table(
+        meta={
+            'length': '1.0', 'position': '106',
+            'concept': 'First job employment type',
+            'question': 'Employee or self-employed?',
+            'universe': 'Not in first job'
+        },
+        data=[
+            ['Employee', '1', '7,990', '277,858', '52.2'],
+            ['Self-employed', '2', '425', '12,452', '2.3'],
+            ['Valid skip', '6', '7,619', '239,819', '45.0'],
+            ['Not stated', '9', '104', '2,584', '0.5'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'AFT_050': self._create_table(
+        meta={
+            'length': '1.0', 'position': '107',
+            'concept': 'First job work hours',
+            'question': 'Full-time or part-time?',
+            'universe': 'Not in first job'
+        },
+        data=[
+            ['Full-time', '1', '6,230', '209,443', '39.3'],
+            ['Part-time', '2', '2,246', '82,036', '15.4'],
+            ['Valid skip', '6', '7,619', '239,819', '45.0'],
+            ['Not stated', '9', '43', '1,415', '0.3'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 45 Tables (First Job Details)
+    'AFT_090': self._create_table(
+        meta={
+            'length': '1.0', 'position': '110',
+            'concept': 'First job relatedness',
+            'question': 'How related was first job to program?',
+            'universe': 'Not in first job'
+        },
+        data=[
+            ['Closely related', '1', '4,087', '124,576', '23.4'],
+            ['Somewhat related', '2', '1,782', '63,332', '11.9'],
+            ['Not related', '3', '2,581', '103,009', '19.3'],
+            ['Valid skip', '6', '7,619', '239,819', '45.0'],
+            ['Not stated', '9', '69', '1,978', '0.4'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 46 Tables (Pre-Program Background)
+    'BEF_P140': self._create_table(
+        meta={
+            'length': '1.0', 'position': '111',
+            'concept': 'Activity before program',
+            'question': 'Main activity 12 months before program?',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['Working', '1', '6,645', '190,919', '35.8'],
+            ['Job searching', '2', '555', '21,897', '4.1'],
+            ['In school', '3', '7,380', '259,754', '48.8'],
+            ['Personal reasons', '4', '712', '25,623', '4.8'],
+            ['Other', '5', '450', '17,923', '3.4'],
+            ['Not stated', '9', '396', '16,597', '3.1'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'BEF_160': self._create_table(
+        meta={
+            'length': '2.0', 'position': '112',
+            'concept': 'Pre-program work experience',
+            'question': 'Months of work before program?',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['None', '01', '1,819', '81,213', '15.2'],
+            ['<12 months', '02', '2,124', '78,179', '14.7'],
+            ['12-24 months', '03', '2,130', '72,907', '13.7'],
+            ['24-36 months', '04', '1,523', '53,305', '10.0'],
+            ['36-48 months', '05', '1,072', '35,037', '6.6'],
+            ['48+ months', '06', '6,914', '190,649', '35.8'],
+            ['Not stated', '99', '556', '21,424', '4.0'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 47 Tables (Education Comparisons)
+    'PREVLEVP': self._create_table(
+        meta={
+            'length': '1.0', 'position': '114',
+            'concept': 'Education before program',
+            'universe': 'Had prior education'
+        },
+        data=[
+            ['College level', '1', '1,449', '65,997', '12.4'],
+            ["Bachelor's level", '2', '4,683', '125,276', '23.5'],
+            ['Graduate level', '3', '1,447', '31,462', '5.9'],
+            ['Valid skip', '6', '7,405', '270,939', '50.9'],
+            ['Not stated', '9', '1,154', '39,040', '7.3'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'HLOSGRDP': self._create_table(
+        meta={
+            'length': '1.0', 'position': '115',
+            'concept': 'Highest education completed (2020)',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['College', '1', '3,777', '160,322', '30.1'],
+            ["Bachelor's", '2', '7,114', '270,224', '50.7'],
+            ['Master/Doctorate', '3', '4,848', '86,136', '16.2'],
+            ['Not stated', '9', '399', '16,032', '3.0'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'PAR1GRD': self._create_table(
+        meta={
+            'length': '1.0', 'position': '116',
+            'concept': 'Education vs one parent (at graduation)',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['Higher than parent', '1', '7,973', '223,205', '41.9'],
+            ['Same as parent', '2', '3,388', '114,926', '21.6'],
+            ['Lower than parent', '3', '3,720', '152,732', '28.7'],
+            ['Not stated', '9', '1,057', '41,850', '7.9'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 48 Tables (Parental Education Comparisons)
+    'PAR1INT': self._create_table(
+        meta={
+            'length': '1.0', 'position': '117',
+            'concept': 'Education vs one parent (current)',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['Higher than parent', '1', '8,724', '255,036', '47.9'],
+            ['Same as parent', '2', '3,309', '110,494', '20.7'],
+            ['Lower than parent', '3', '3,155', '129,212', '24.3'],
+            ['Not stated', '9', '950', '37,972', '7.1'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'PAR2GRD': self._create_table(
+        meta={
+            'length': '1.0', 'position': '118',
+            'concept': 'Education vs other parent (at graduation)',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['Higher than parent', '1', '10,560', '309,107', '58.0'],
+            ['Same as parent', '2', '2,301', '85,287', '16.0'],
+            ['Lower than parent', '3', '1,775', '80,842', '15.2'],
+            ['Not stated', '9', '1,502', '57,479', '10.8'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    # Page 49 Tables (Continued)
+    'PAR2INT': self._create_table(
+        meta={
+            'length': '1.0', 'position': '119',
+            'concept': 'Education vs other parent (current)',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['Higher than parent', '1', '11,201', '335,359', '63.0'],
+            ['Same as parent', '2', '2,083', '75,722', '14.2'],
+            ['Lower than parent', '3', '1,476', '67,949', '12.8'],
+            ['Not stated', '9', '1,378', '53,684', '10.1'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+
+    'GRADAGEP': self._create_table(
+        meta={
+            'length': '1.0', 'position': '120',
+            'concept': 'Age at graduation',
+            'universe': 'All respondents'
+        },
+        data=[
+            ['Under 25', '1', '7,326', '287,774', '54.0'],
+            ['25-29', '2', '3,788', '123,467', '23.2'],
+            ['30-39', '3', '3,079', '76,460', '14.4'],
+            ['40+', '4', '1,863', '42,740', '8.0'],
+            ['Not stated', '9', '82', '2,272', '0.4'],
+            ['Total', '', '16,138', '532,714', '100.0']
+        ]
+    ),
+            
+            # Page 50-52 Tables (Demographics)
+            'GENDER2': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '121',
+                    'concept': 'Gender after distribution of non-binary persons',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Men+', '1', '6,773', '230,513', '43.3'],
+                    ['Women+', '2', '9,365', '302,201', '56.7'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'PERSINCP': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '126',
+                    'concept': 'Total personal income in 2022',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Less than $30,000', '01', '2,786', '106,771', '20.0'],
+                    ['$30,000 to $49,999', '02', '2,845', '109,591', '20.6'],
+                    ['$50,000 to $69,999', '03', '3,183', '105,278', '19.8'],
+                    ['$70,000 to $89,999', '04', '2,100', '57,819', '10.9'],
+                    ['$90,000 or more', '05', '2,216', '50,146', '9.4'],
+                    ['Not stated', '99', '3,008', '103,109', '19.4'],
+                ]
+            ),
+            # Page 53 Tables (Technical Variables)
+            'WTPF': self._create_table(
+                meta={
+                    'length': '12.4', 'position': '129',
+                    'concept': 'Survey weight',
+                    'universe': 'All respondents'
+                },
+                data=[]
+            ),
+            'VERDATE': self._create_table(
+                meta={
+                    'length': '10.0', 'position': '141',
+                    'concept': 'File creation date',
+                    'universe': 'All respondents'
+                },
+                data=[]
+            ),
+            ###############
+        	'REG_RESP': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '8',
+        		'concept': 'Region of residence',
+        		'question': 'Region of primary residence at interview (2023)',
+        		'universe': 'All respondents'
+        	    },
+        	    data=[
+        		['Atlantic provinces', '1', '2,279', '27,544', '5.2'],
+        		['Quebec', '2', '3,549', '114,492', '21.5'],
+        		['Ontario', '3', '3,497', '242,046', '45.4'],
+        		['Western provinces/territories', '4', '6,588', '143,546', '26.9'],
+        		['Not stated', '9', '225', '5,086', '1.0'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'PGMCIPAP': self._create_table(
+        	    meta={
+        		'length': '2.0', 'position': '9',
+        		'concept': 'Field of study',
+        		'question': 'Aggregated CIP 2021 classification of program',
+        		'universe': 'All respondents'
+        	    },
+        	    data=[
+        		['Education', '01', '1,266', '27,929', '5.2'],
+        		['Visual/performing arts/comms/humanities', '02', '1,188', '43,814', '8.2'],
+        		['Social/behavioral sciences/law', '04', '2,283', '77,991', '14.6'],
+        		['Business/management/public admin', '05', '2,524', '86,226', '16.2'],
+        		['Physical/life sciences/technologies', '06', '956', '25,765', '4.8'],
+        		['Math/computer/info sciences', '07', '944', '30,021', '5.6'],
+        		['Architecture/engineering/trades', '08', '2,278', '72,703', '13.6'],
+        		['Health fields', '09', '2,435', '76,575', '14.4'],
+        		['Other', '10', '948', '36,911', '6.9'],
+        		['Not stated', '99', '46', '1,266', '0.2'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'PGM_P036': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '12',
+        		'concept': 'Part-time study reason',
+        		'question': 'Main reason for not taking program full-time',
+        		'universe': 'Part-time students'
+        	    },
+        	    data=[
+        		['Had a job', '1', '2,014', '48,307', '9.1'],
+        		['Financial reason', '2', '185', '4,955', '0.9'],
+        		['Program not offered full-time', '3', '216', '5,223', '1.0'],
+        		['Personal reasons', '4', '537', '17,426', '3.3'],
+        		['Other', '5', '214', '6,697', '1.3'],
+        		['Valid skip (full-time)', '6', '12,935', '449,391', '84.4'],
+        		['Not stated', '9', '37', '714', '0.1'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'COV_070': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '31',
+        		'concept': 'COVID education impact',
+        		'question': 'How COVID changed further education plans',
+        		'universe': 'Graduated during/after COVID'
+        	    },
+        	    data=[
+        		['No change', '1', '11,178', '348,291', '65.4'],
+        		['Delayed studies', '2', '1,559', '53,973', '10.1'],
+        		['Decided to pursue', '3', '1,302', '49,894', '9.4'],
+        		['Decided not to pursue', '4', '1,511', '58,302', '10.9'],
+        		['Other', '5', '558', '20,690', '3.9'],
+        		['Not stated', '9', '30', '1,564', '0.3'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'COV_080': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '32',
+        		'concept': 'COVID employment impact',
+        		'question': 'Employment status/plans affected by COVID',
+        		'universe': 'Graduated during/after COVID'
+        	    },
+        	    data=[
+        		['Yes', '1', '8,242', '286,731', '53.8'],
+        		['No', '2', '7,859', '244,017', '45.8'],
+        		['Not stated', '9', '37', '1,966', '0.4'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'HLOSINTP': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '35',
+        		'concept': 'Highest education level',
+        		'question': 'Highest level of education completed (2023)',
+        		'universe': 'All respondents'
+        	    },
+        	    data=[
+        		['College', '1', '4,142', '191,777', '36.0'],
+        		['Bachelor\'s', '2', '6,250', '217,468', '40.8'],
+        		['Master\'s/Doctorate', '3', '5,733', '123,173', '23.1'],
+        		['Not stated', '9', '13', '296', '0.1'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'STL_100A': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '44',
+        		'concept': 'Loan assistance',
+        		'question': 'Received repayment assistance plan (RAP)',
+        		'universe': 'Government loan recipients with debt'
+        	    },
+        	    data=[
+        		['Yes', '1', '1,264', '42,548', '8.0'],
+        		['No', '2', '383', '11,898', '2.2'],
+        		['Valid skip', '6', '14,404', '475,102', '89.2'],
+        		['Not stated', '9', '87', '3,167', '0.6'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'STL_100B': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '45',
+        		'concept': 'Loan assistance',
+        		'question': 'Received revision of terms (ROT)',
+        		'universe': 'Government loan recipients with debt'
+        	    },
+        	    data=[
+        		['Yes', '1', '265', '7,502', '1.4'],
+        		['No', '2', '1,382', '46,943', '8.8'],
+        		['Valid skip', '6', '14,404', '475,102', '89.2'],
+        		['Not stated', '9', '87', '3,167', '0.6'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'STL_100C': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '46',
+        		'concept': 'Loan assistance',
+        		'question': 'Received interest-only payments option',
+        		'universe': 'Government loan recipients with debt'
+        	    },
+        	    data=[
+        		['Yes', '1', '317', '10,031', '1.9'],
+        		['No', '2', '1,330', '44,414', '8.3'],
+        		['Valid skip', '6', '14,404', '475,102', '89.2'],
+        		['Not stated', '9', '87', '3,167', '0.6'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'STL_100D': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '47',
+        		'concept': 'Loan assistance',
+        		'question': 'Received none of above assistance types',
+        		'universe': 'Government loan recipients with debt'
+        	    },
+        	    data=[
+        		['Yes', '1', '4,126', '134,596', '25.3'],
+        		['Valid skip', '6', '11,925', '394,951', '74.1'],
+        		['Not stated', '9', '87', '3,167', '0.6'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),
+        
+        	'STL_130': self._create_table(
+        	    meta={
+        		'length': '1.0', 'position': '48',
+        		'concept': 'Loan repayment',
+        		'question': 'Expected total loan repayment term',
+        		'universe': 'Government loan recipients with debt'
+        	    },
+        	    data=[
+        		['<1 year', '1', '205', '6,300', '1.2'],
+        		['1-3 years', '2', '810', '27,777', '5.2'],
+        		['4-6 years', '3', '1,184', '37,893', '7.1'],
+        		['7-10 years', '4', '1,296', '40,254', '7.6'],
+        		['>10 years', '5', '847', '24,564', '4.6'],
+        		['Valid skip', '6', '11,748', '394,274', '74.0'],
+        		['Not stated', '9', '48', '1,652', '0.3'],
+        		['Total', '', '16,138', '532,714', '100.0']
+        	    ]
+        	),        
+            'STL_150': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '49',
+                    'concept': 'Government loan repayment',
+                    'question': 'Borrowed from financial institution to repay government loans?',
+                    'universe': 'STL_010 = 1 and STL_020 = 1'
+                },
+                data=[
+                    ['Yes', '1', '667', '19,544', '3.7'],
+                    ['No', '2', '6,663', '215,231', '40.4'],
+                    ['Valid skip', '6', '8,761', '296,509', '55.7'],
+                    ['Not stated', '9', '47', '1,430', '0.3'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160D': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '52',
+                    'concept': 'Funding sources',
+                    'question': 'Used non-government grants/bursaries?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '1,954', '53,440', '10.0'],
+                    ['No', '2', '13,807', '463,920', '87.1'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160E': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '53',
+                    'concept': 'Funding sources',
+                    'question': 'Used scholarships/awards?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '5,757', '149,619', '28.1'],
+                    ['No', '2', '10,004', '367,740', '69.0'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160G': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '55',
+                    'concept': 'Funding sources',
+                    'question': 'Used research/teaching assistantship?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '1,896', '39,471', '7.4'],
+                    ['No', '2', '13,865', '477,888', '89.7'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160H': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '56',
+                    'concept': 'Funding sources',
+                    'question': 'Used family/friends funding?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '7,554', '267,972', '50.3'],
+                    ['No', '2', '8,207', '249,388', '46.8'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160I': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '57',
+                    'concept': 'Funding sources',
+                    'question': 'Used bank/institution loans?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '2,452', '66,482', '12.5'],
+                    ['No', '2', '13,309', '450,877', '84.6'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160J': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '58',
+                    'concept': 'Funding sources',
+                    'question': 'Used credit cards?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '2,171', '69,260', '13.0'],
+                    ['No', '2', '13,590', '448,100', '84.1'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_160L': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '59',
+                    'concept': 'Funding sources',
+                    'question': 'Used employer funding?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '1,172', '28,651', '5.4'],
+                    ['No', '2', '14,589', '488,709', '91.7'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STLP160N': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '60',
+                    'concept': 'Funding sources',
+                    'question': 'Used other funding sources?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '846', '21,676', '4.1'],
+                    ['No', '2', '14,915', '495,684', '93.0'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'SRCFUND': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '61',
+                    'concept': 'Funding sources',
+                    'question': 'Number of funding sources used',
+                    'universe': 'All respondents with at least one source'
+                },
+                data=[
+                    ['One source', '1', '3,604', '134,543', '25.3'],
+                    ['Two sources', '2', '3,902', '139,075', '26.1'],
+                    ['Three or more', '3', '8,522', '254,286', '47.7'],
+                    ['Not stated', '9', '110', '4,810', '0.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'STL_170A': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '62',
+                    'concept': 'Main funding sources',
+                    'question': 'Government student loans as main source?',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '3,464', '108,714', '20.4'],
+                    ['No', '2', '4,920', '140,861', '26.4'],
+                    ['Valid skip', '6', '7,360', '266,383', '50.0'],
+                    ['Not stated', '9', '394', '16,756', '3.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170B': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '63',
+                    'concept': 'Main source of funding - RESP',
+                    'question': 'What were your two main sources of funding? - Registered Education Savings Plan (RESP)',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '1,511', '51,349', '9.6'],
+                    ['No', '2', '1,096', '32,745', '6.1'],
+                    ['Valid skip', '6', '13,153', '433,255', '81.3'],
+                    ['Not stated', '9', '378', '15,366', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170C': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '64',
+                    'concept': 'Main source of funding - Government grants or bursaries',
+                    'question': 'What were your two main sources of funding? - Government grants or bursaries based on your financial needs',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '979', '36,813', '6.9'],
+                    ['No', '2', '2,234', '68,009', '12.8'],
+                    ['Valid skip', '6', '12,543', '412,377', '77.4'],
+                    ['Not stated', '9', '382', '15,515', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170D': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '65',
+                    'concept': 'Main source of funding - Non-government grants or bursaries',
+                    'question': 'What were your two main sources of funding? - Non-government grants or bursaries based on your financial needs',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '291', '7,913', '1.5'],
+                    ['No', '2', '1,529', '41,623', '7.8'],
+                    ['Valid skip', '6', '13,936', '467,674', '87.8'],
+                    ['Not stated', '9', '382', '15,504', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170E': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '66',
+                    'concept': 'Main source of funding - Scholarships or awards',
+                    'question': 'What were your two main sources of funding? - Scholarships, awards, fellowships or prizes',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '1,687', '36,497', '6.9'],
+                    ['No', '2', '3,394', '96,358', '18.1'],
+                    ['Valid skip', '6', '10,672', '384,009', '72.1'],
+                    ['Not stated', '9', '385', '15,850', '3.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170F': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '67',
+                    'concept': 'Main source of funding - Employment earnings or savings',
+                    'question': 'What were your two main sources of funding? - Employment earnings or personal savings',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '3,983', '118,311', '22.2'],
+                    ['No', '2', '3,121', '91,277', '17.1'],
+                    ['Valid skip', '6', '8,643', '306,734', '57.6'],
+                    ['Not stated', '9', '391', '16,392', '3.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170G': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '68',
+                    'concept': 'Main source of funding - Research or teaching assistantship',
+                    'question': 'What were your two main sources of funding? - Research assistantship or teaching assistantship',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '550', '9,432', '1.8'],
+                    ['No', '2', '1,170', '27,272', '5.1'],
+                    ['Valid skip', '6', '14,038', '480,625', '90.2'],
+                    ['Not stated', '9', '380', '15,386', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170H': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '69',
+                    'concept': 'Main source of funding - Parents, family, friends',
+                    'question': 'What were your two main sources of funding? - Parents, spouse or partner, family or friends',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '2,539', '82,951', '15.6'],
+                    ['No', '2', '2,264', '64,552', '12.1'],
+                    ['Valid skip', '6', '10,947', '368,677', '69.2'],
+                    ['Not stated', '9', '388', '16,534', '3.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170I': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '70',
+                    'concept': 'Main source of funding - Bank or institution loans',
+                    'question': 'What were your two main sources of funding? - Line of credit, bank or other financial institution loans',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '1,047', '26,911', '5.1'],
+                    ['No', '2', '943', '24,493', '4.6'],
+                    ['Valid skip', '6', '13,769', '465,582', '87.4'],
+                    ['Not stated', '9', '379', '15,728', '3.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170J': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '71',
+                    'concept': 'Main source of funding - Credit cards',
+                    'question': 'What were your two main sources of funding? - Credit cards',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '250', '9,644', '1.8'],
+                    ['No', '2', '1,626', '48,558', '9.1'],
+                    ['Valid skip', '6', '13,881', '458,409', '86.1'],
+                    ['Not stated', '9', '381', '16,103', '3.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_170L': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '72',
+                    'concept': 'Main source of funding - Employer',
+                    'question': 'What were your two main sources of funding? - Employer',
+                    'universe': '(STL_020 = 1 and STL_160 > 2 SELECTIONS) or (STL_160 > 3 SELECTIONS)'
+                },
+                data=[
+                    ['Yes', '1', '281', '6,412', '1.2'],
+                    ['No', '2', '469', '11,512', '2.2'],
+                    ['Valid skip', '6', '15,011', '499,436', '93.8'],
+                    ['Not stated', '9', '377', '15,354', '2.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STLP170N': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '73',
+                    'concept': 'Main source of funding - Other',
+                    'question': '',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '241', '5,547', '1.0'],
+                    ['Valid skip', '6', '15,239', '505,504', '94.9'],
+                    ['Not stated', '9', '658', '21,663', '4.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'STL_190': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '75',
+                    'concept': 'Repay loans from family or friends for education',
+                    'question': 'Have you ever borrowed money from your parents, spouse or partner, family or friends to fund your postsecondary education that you have to pay back or that you have already paid back?',
+                    'universe': 'STL_160H = 1'
+                },
+                data=[
+                    ['Yes', '1', '2,176', '83,456', '15.7'],
+                    ['No', '2', '5,235', '178,568', '33.5'],
+                    ['Valid skip', '6', '8,207', '249,388', '46.8'],
+                    ['Not stated', '9', '520', '21,302', '4.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'DBTALGRD': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '77',
+                    'concept': 'Total education debt at graduation',
+                    'question': 'Debt size of all loans at graduation (2020)',
+                    'universe': 'Respondents with government or private loans'
+                },
+                data=[
+                    ['$0', '0', '1,353', '38,958', '7.3'],
+                    ['Less than $5,000', '1', '646', '23,483', '4.4'],
+                    ['$5,000-$10,000', '2', '1,041', '38,034', '7.1'],
+                    ['$10,000-$25,000', '3', '2,495', '90,924', '17.1'],
+                    ['$25,000+', '4', '3,041', '91,167', '17.1'],
+                    ['Valid skip', '6', '6,640', '215,892', '40.5'],
+                    ['Not stated', '9', '922', '34,256', '6.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'DBTOTINT': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '78',
+                    'concept': 'Private debt at interview',
+                    'question': 'Non-government loan debt size (2023)',
+                    'universe': 'Respondents with private loans'
+                },
+                data=[
+                    ['$0', '0', '1,765', '58,776', '11.0'],
+                    ['Less than $5,000', '1', '317', '11,220', '2.1'],
+                    ['$5,000-$10,000', '2', '411', '13,841', '2.6'],
+                    ['$10,000-$25,000', '3', '737', '24,210', '4.5'],
+                    ['$25,000+', '4', '718', '21,269', '4.0'],
+                    ['Valid skip', '6', '11,441', '374,416', '70.3'],
+                    ['Not stated', '9', '749', '28,982', '5.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'DBTALINT': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '79',
+                    'concept': 'Total education debt at interview',
+                    'question': 'Debt size of all loans (2023)',
+                    'universe': 'Respondents with government or private loans'
+                },
+                data=[
+                    ['$0', '0', '2,917', '98,638', '18.5'],
+                    ['Less than $5,000', '1', '606', '21,846', '4.1'],
+                    ['$5,000-$10,000', '2', '899', '32,625', '6.1'],
+                    ['$10,000-$25,000', '3', '1,941', '66,002', '12.4'],
+                    ['$25,000+', '4', '2,187', '61,559', '11.6'],
+                    ['Valid skip', '6', '6,640', '215,892', '40.5'],
+                    ['Not stated', '9', '948', '36,152', '6.8'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA_010': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '81',
+                    'concept': 'Current school attendance',
+                    'question': 'Attending school in reference week?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '2,075', '67,337', '12.6'],
+                    ['No', '2', '14,017', '463,865', '87.1'],
+                    ['Not stated', '9', '46', '1,512', '0.3'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA2_07': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '83',
+                    'concept': 'Multiple jobs',
+                    'question': 'Had more than one job last week?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Yes', '1', '1,946', '63,266', '11.9'],
+                    ['No', '2', '12,128', '396,698', '74.5'],
+                    ['Valid skip', '6', '1,997', '69,616', '13.1'],
+                    ['Not stated', '9', '67', '3,134', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA3_P01': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '84',
+                    'concept': 'Employment type',
+                    'question': 'Employee or self-employed?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Employee', '1', '13,277', '434,020', '81.5'],
+                    ['Self-employed', '2', '776', '25,665', '4.8'],
+                    ['Valid skip', '6', '2,000', '69,763', '13.1'],
+                    ['Not stated', '9', '85', '3,267', '0.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LFCINDP': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '85',
+                    'concept': 'Industry sector',
+                    'question': 'Sector for main job',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Goods-producing', '01', '1,418', '51,255', '9.6'],
+                    ['Trade/transportation', '02', '1,235', '52,174', '9.8'],
+                    ['Finance/real estate', '03', '2,125', '68,537', '12.9'],
+                    ['Professional services', '04', '2,288', '73,012', '13.7'],
+                    ['Education', '05', '2,171', '51,394', '9.6'],
+                    ['Other services', '06', '1,508', '61,770', '11.6'],
+                    ['Healthcare', '07', '2,999', '92,296', '17.3'],
+                    ['Valid skip', '96', '1,994', '69,582', '13.1'],
+                    ['Not stated', '99', '400', '12,696', '2.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LFCOCCP': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '87',
+                    'concept': 'Occupation category',
+                    'question': 'Broad occupational category',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Business/finance', '02', '2,847', '102,043', '19.2'],
+                    ['Natural/applied sciences', '03', '2,465', '70,523', '13.2'],
+                    ['Health', '04', '1,938', '57,936', '10.9'],
+                    ['Education/law/services', '05', '3,592', '97,462', '18.3'],
+                    ['Sales/service', '07', '1,425', '66,780', '12.5'],
+                    ['Other', '10', '1,549', '55,733', '10.5'],
+                    ['Valid skip', '96', '1,994', '69,582', '13.1'],
+                    ['Not stated', '99', '328', '12,654', '2.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LFWFTPTP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '89',
+                    'concept': 'Work hours',
+                    'question': 'Full-time or part-time status',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Full-time (30+ hrs)', '1', '12,334', '399,396', '75.0'],
+                    ['Part-time (<30 hrs)', '2', '1,525', '52,870', '9.9'],
+                    ['Valid skip', '6', '2,000', '69,763', '13.1'],
+                    ['Not stated', '9', '279', '10,686', '2.0'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA6_05': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '90',
+                    'concept': 'Job permanency',
+                    'question': 'Is job permanent?',
+                    'universe': 'Employee respondents'
+                },
+                data=[
+                    ['Permanent', '1', '10,839', '356,198', '66.9'],
+                    ['Not permanent', '2', '2,330', '73,595', '13.8'],
+                    ['Valid skip', '6', '2,702', '92,945', '17.4'],
+                    ['Not stated', '9', '267', '9,976', '1.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA6_08': self._create_table(
+                meta={
+                    'length': '2.0', 'position': '91',
+                    'concept': 'Job search method',
+                    'question': 'Main method to find job',
+                    'universe': 'Employee respondents'
+                },
+                data=[
+                    ['Job ad', '01', '4,770', '161,723', '30.4'],
+                    ['Direct contact', '02', '2,838', '82,798', '15.5'],
+                    ['Through school', '03', '1,630', '46,553', '8.7'],
+                    ['Employment agency', '04', '336', '13,251', '2.5'],
+                    ['Networking event', '05', '599', '20,156', '3.8'],
+                    ['Family', '06', '655', '22,845', '4.3'],
+                    ['Friends', '07', '1,448', '53,334', '10.0'],
+                    ['Other', '08', '899', '29,278', '5.5'],
+                    ['Valid skip', '96', '2,702', '92,945', '17.4'],
+                    ['Not stated', '99', '261', '9,831', '1.8'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            'LMA6_11': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '96',
+                    'concept': 'Job relatedness to program',
+                    'question': 'How closely is job related to 2020 program?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Closely related', '1', '8,817', '264,246', '49.6'],
+                    ['Somewhat related', '2', '2,928', '101,160', '19.0'],
+                    ['Not at all related', '3', '2,218', '90,024', '16.9'],
+                    ['Valid skip', '6', '2,005', '69,827', '13.1'],
+                    ['Not stated', '9', '170', '7,457', '1.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA6_12': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '97',
+                    'concept': 'Job qualification level',
+                    'question': 'How qualified were you for the job?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Overqualified', '1', '3,037', '101,591', '19.1'],
+                    ['Qualified', '2', '9,879', '319,178', '59.9'],
+                    ['Underqualified', '3', '230', '7,810', '1.5'],
+                    ['Valid skip', '6', '2,805', '95,871', '18.0'],
+                    ['Not stated', '9', '187', '8,264', '1.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA6_13B': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '99',
+                    'concept': 'Salary satisfaction',
+                    'question': 'Satisfaction with wage/salary?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Very satisfied', '1', '2,108', '65,443', '12.3'],
+                    ['Satisfied', '2', '5,321', '170,475', '32.0'],
+                    ['Neutral', '3', '2,404', '82,605', '15.5'],
+                    ['Dissatisfied', '4', '2,594', '87,464', '16.4'],
+                    ['Very dissatisfied', '5', '714', '22,764', '4.3'],
+                    ['Valid skip', '6', '2,805', '95,871', '18.0'],
+                    ['Not stated', '9', '192', '8,093', '1.5'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA6_13C': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '100',
+                    'concept': 'Job security satisfaction',
+                    'question': 'Satisfaction with job security?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Very satisfied', '1', '4,566', '143,072', '26.9'],
+                    ['Satisfied', '2', '5,714', '190,258', '35.7'],
+                    ['Neutral', '3', '1,647', '56,611', '10.6'],
+                    ['Dissatisfied', '4', '902', '29,382', '5.5'],
+                    ['Very dissatisfied', '5', '311', '9,318', '1.7'],
+                    ['Valid skip', '6', '2,805', '95,871', '18.0'],
+                    ['Not stated', '9', '193', '8,201', '1.5'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'LMA6_15': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '103',
+                    'concept': 'First job after graduation',
+                    'question': 'Is this your first job after graduation?',
+                    'universe': 'Employed respondents'
+                },
+                data=[
+                    ['Yes', '1', '6,127', '190,938', '35.8'],
+                    ['No', '2', '6,996', '236,825', '44.5'],
+                    ['Valid skip', '6', '2,805', '95,871', '18.0'],
+                    ['Not stated', '9', '210', '9,080', '1.7'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'AFT_070': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '108',
+                    'concept': 'First job permanence',
+                    'question': 'Was first job permanent?',
+                    'universe': 'Respondents with post-graduation jobs'
+                },
+                data=[
+                    ['Permanent', '1', '5,160', '187,832', '35.3'],
+                    ['Not permanent', '2', '2,799', '89,003', '16.7'],
+                    ['Valid skip', '6', '8,147', '254,844', '47.8'],
+                    ['Not stated', '9', '32', '1,035', '0.2'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'AFT_080': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '109',
+                    'concept': 'First job non-permanence reason',
+                    'question': 'Why was first job not permanent?',
+                    'universe': 'Respondents with non-permanent first jobs'
+                },
+                data=[
+                    ['Seasonal', '1', '459', '13,019', '2.4'],
+                    ['Temporary/contract', '2', '1,723', '54,756', '10.3'],
+                    ['Casual', '3', '456', '15,258', '2.9'],
+                    ['Other', '4', '157', '5,542', '1.0'],
+                    ['Valid skip', '6', '13,307', '442,676', '83.1'],
+                    ['Not stated', '9', '36', '1,463', '0.3'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'MS_P01': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '122',
+                    'concept': 'Marital status',
+                    'question': 'Current marital status?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Married/common-law', '1', '7,077', '196,805', '36.9'],
+                    ['Single/widowed/separated/divorced', '2', '8,650', '319,489', '60.0'],
+                    ['Not stated', '9', '411', '16,420', '3.1'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'MS_P02': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '123',
+                    'concept': 'Dependent children',
+                    'question': 'Have any dependent children?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '3,364', '82,881', '15.6'],
+                    ['No', '2', '12,316', '431,893', '81.1'],
+                    ['Not stated', '9', '458', '17,940', '3.4'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'CTZSHIPP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '124',
+                    'concept': 'Immigration status',
+                    'question': 'Status in Canada at interview?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Canadian by birth', '1', '10,785', '318,244', '59.7'],
+                    ['Canadian by naturalization', '2', '2,365', '76,538', '14.4'],
+                    ['Landed immigrant', '3', '1,680', '58,679', '11.0'],
+                    ['Not stated', '9', '1,308', '79,253', '14.9'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'VISBMINP': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '125',
+                    'concept': 'Visible minority status',
+                    'question': 'Identify as visible minority?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '5,691', '232,849', '43.7'],
+                    ['No', '2', '9,996', '282,335', '53.0'],
+                    ['Not stated', '9', '451', '17,531', '3.3'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            ),
+            
+            'DDIS_FL': self._create_table(
+                meta={
+                    'length': '1.0', 'position': '128',
+                    'concept': 'Disability status',
+                    'question': 'Has at least one disability?',
+                    'universe': 'All respondents'
+                },
+                data=[
+                    ['Yes', '1', '5,703', '177,825', '33.4'],
+                    ['No', '2', '10,435', '354,889', '66.6'],
+                    ['Total', '', '16,138', '532,714', '100.0']
+                ]
+            )
+        }
+    
+    def _create_table(self, meta, data):
+        """Helper to create standardized table structure"""
+        return {
+            'meta': meta,
+            'data': {
+                'Answer Categories': [row[0] for row in data],
+                'Code': [row[1] for row in data],
+                'Frequency': [row[2] for row in data],
+                'Weighted Frequency': [row[3] for row in data],
+                '%': [row[4] for row in data]
+            }
+        }
+    
+    def get_table_names(self):
+        """List all available tables"""
+        return sorted(self.tables.keys())
+    
+    def get_table(self, table_name, formatted=True):
+        """Retrieve a table by name"""
+        if table_name not in self.tables:
+            available = ', '.join(self.get_table_names())
+            raise ValueError(f"Table '{table_name}' not found. Available tables: {available}")
+        
+        table = self.tables[table_name]
+        if not formatted:
+            return table
+        
+        return self._format_table(table_name, table['meta'], table['data'])
+    
+    def _format_table(self, name, meta, data):
+        """Format table with metadata header"""
+        # Build metadata rows
+        rows = [
+            ["Variable Name:", name, "", "", ""],
+            ["Length:", meta.get('length', ''), "", "", ""],
+            ["Position:", meta.get('position', ''), "", "", ""],
+            ["Question Name:", meta.get('question_name', ''), "", "", ""],
+            ["Concept:", meta.get('concept', ''), "", "", ""],
+            ["Question Text:", meta.get('question_text', ''), "", "", ""],
+            ["Universe:", meta.get('universe', ''), "", "", ""],
+        ]
+        
+        # Add note if exists
+        if 'note' in meta:
+            if isinstance(meta['note'], list):
+                for note in meta['note']:
+                    rows.append(["Note:", note, "", "", ""])
+            else:
+                rows.append(["Note:", meta['note'], "", "", ""])
+        
+        # Add source if exists
+        if 'source' in meta:
+            rows.append(["Source:", meta['source'], "", "", ""])
+        
+        # Add column headers
+        rows.append(["Answer Categories", "Code", "Frequency", "Weighted Frequency", "%"])
+        
+        # Add data rows
+        rows = rows[-1:]
+        for i in range(len(data['Answer Categories'])):
+            rows.append([
+                data['Answer Categories'][i],
+                data['Code'][i],
+                data['Frequency'][i],
+                data['Weighted Frequency'][i],
+                data['%'][i]
+            ])
+        return pd.DataFrame(rows)
+    
+    def table_df(self, name, meta, data):
+        df = _format_table(self, name, meta, data)
+        df.columns = df.pop(0)
+        return df
+        
+    
+    
+    def save_table(self, table_name, filename=None):
+        """Save table to Excel"""
+        df = self.get_table(table_name)
+        if not filename:
+            filename = f"NGS2020_{table_name}.xlsx"
+        df.to_excel(filename, index=False, header=False)
+        return filename
+
+
+ngs = NGS2020CompleteTables()
+
+def export_all_tables_to_excel(tables_list, output_filename="NGS_Tables.xlsx"):
+    ngs = NGS2020CompleteTables()
+    writer = pd.ExcelWriter(output_filename, engine='xlsxwriter')
+    
+    for table_name in tables_list:
+        try:
+            table = ngs.get_table(table_name)
+            # Save each table to a separate sheet
+            table.to_excel(writer, sheet_name=table_name, index=False, header=False)
+            # print(f"Successfully processed table: {table_name}")
+        except ValueError as e:
+            print(f"Error processing {table_name}: {e}")
+    
+    writer.close()
+    print(f"\nAll tables saved to {output_filename}")
+    return output_filename
+
+# Your list of tables
+tables_list = ngs.get_table_names()
+
+if __name__ == "__main__":
+    output_file = export_all_tables_to_excel(tables_list)
+```

@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Fuxi Ma fuxi.ma@outlook.com">
+
+<title>The Graduate Journey: Education and Labour Market Realities in Canada</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="helloNGS_files/libs/clipboard/clipboard.min.js"></script>
+<script src="helloNGS_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="helloNGS_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="helloNGS_files/libs/quarto-html/popper.min.js"></script>
+<script src="helloNGS_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="helloNGS_files/libs/quarto-html/anchor.min.js"></script>
+<link href="helloNGS_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="helloNGS_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="helloNGS_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="helloNGS_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="helloNGS_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#national-graduates-survey--class-of-2020-data-collected-in-2023" id="toc-national-graduates-survey--class-of-2020-data-collected-in-2023" class="nav-link active" data-scroll-target="#national-graduates-survey--class-of-2020-data-collected-in-2023"><span class="header-section-number">0.1</span> National Graduates Survey- class of 2020 (Data collected in 2023)</a></li>
+  <li><a href="#ngs-questions" id="toc-ngs-questions" class="nav-link" data-scroll-target="#ngs-questions"><span class="header-section-number">0.2</span> NGS Questions</a></li>
+  <li><a href="#response-code" id="toc-response-code" class="nav-link" data-scroll-target="#response-code"><span class="header-section-number">0.3</span> Response code</a></li>
+  <li><a href="#extract-all-ngs-tables-to-excel" id="toc-extract-all-ngs-tables-to-excel" class="nav-link" data-scroll-target="#extract-all-ngs-tables-to-excel"><span class="header-section-number">0.4</span> Extract All NGS Tables to Excel</a>
+  <ul>
+  <li><a href="#fuction-for-getting-ngs-table" id="toc-fuction-for-getting-ngs-table" class="nav-link" data-scroll-target="#fuction-for-getting-ngs-table"><span class="header-section-number">0.4.1</span> Fuction for getting NGS table</a></li>
+  </ul></li>
+  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis"><span class="header-section-number">0.5</span> Data Analysis</a>
+  <ul>
+  <li><a href="#distribution-of-personal-income-in-2022" id="toc-distribution-of-personal-income-in-2022" class="nav-link" data-scroll-target="#distribution-of-personal-income-in-2022"><span class="header-section-number">0.5.1</span> Distribution of Personal Income in 2022</a></li>
+  <li><a href="#age-distribution-at-graduation" id="toc-age-distribution-at-graduation" class="nav-link" data-scroll-target="#age-distribution-at-graduation"><span class="header-section-number">0.5.2</span> Age Distribution at Graduation</a></li>
+  <li><a href="#gender-distribution" id="toc-gender-distribution" class="nav-link" data-scroll-target="#gender-distribution"><span class="header-section-number">0.5.3</span> Gender Distribution</a></li>
+  <li><a href="#distribution-by-citizenship-status" id="toc-distribution-by-citizenship-status" class="nav-link" data-scroll-target="#distribution-by-citizenship-status"><span class="header-section-number">0.5.4</span> Distribution by Citizenship Status</a></li>
+  <li><a href="#education-level" id="toc-education-level" class="nav-link" data-scroll-target="#education-level"><span class="header-section-number">0.5.5</span> Education Level</a></li>
+  <li><a href="#inter-regional-mobility-of-graduates" id="toc-inter-regional-mobility-of-graduates" class="nav-link" data-scroll-target="#inter-regional-mobility-of-graduates"><span class="header-section-number">0.5.6</span> Inter-Regional Mobility of Graduates</a></li>
+  </ul></li>
+  <li><a href="#linear-regression-analysis-with-ngs-data" id="toc-linear-regression-analysis-with-ngs-data" class="nav-link" data-scroll-target="#linear-regression-analysis-with-ngs-data"><span class="header-section-number">0.6</span> Linear Regression Analysis with NGS Data</a>
+  <ul>
+  <li><a href="#statsmodels" id="toc-statsmodels" class="nav-link" data-scroll-target="#statsmodels"><span class="header-section-number">0.6.1</span> statsmodels</a></li>
+  </ul></li>
+  <li><a href="#field-of-study-vs.-labor-outcomes" id="toc-field-of-study-vs.-labor-outcomes" class="nav-link" data-scroll-target="#field-of-study-vs.-labor-outcomes"><span class="header-section-number">0.7</span> Field of Study vs.&nbsp;Labor Outcomes</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">0.8</span> Conclusion</a></li>
+  <li><a href="#summary-and-conclusion-for-university-strategic-planning" id="toc-summary-and-conclusion-for-university-strategic-planning" class="nav-link" data-scroll-target="#summary-and-conclusion-for-university-strategic-planning"><span class="header-section-number">1</span> Summary and Conclusion for University Strategic Planning</a>
+  <ul>
+  <li><a href="#key-insights-and-strategic-recommendations" id="toc-key-insights-and-strategic-recommendations" class="nav-link" data-scroll-target="#key-insights-and-strategic-recommendations"><span class="header-section-number">1.1</span> Key Insights and Strategic Recommendations</a>
+  <ul>
+  <li><a href="#program-development-and-delivery" id="toc-program-development-and-delivery" class="nav-link" data-scroll-target="#program-development-and-delivery"><span class="header-section-number">1.1.1</span> 1. Program Development and Delivery</a></li>
+  <li><a href="#enrollment-and-marketing-strategy" id="toc-enrollment-and-marketing-strategy" class="nav-link" data-scroll-target="#enrollment-and-marketing-strategy"><span class="header-section-number">1.1.2</span> 2. Enrollment and Marketing Strategy</a></li>
+  <li><a href="#student-financial-support" id="toc-student-financial-support" class="nav-link" data-scroll-target="#student-financial-support"><span class="header-section-number">1.1.3</span> 3. Student Financial Support</a></li>
+  <li><a href="#covid-19-response-and-resilience-planning" id="toc-covid-19-response-and-resilience-planning" class="nav-link" data-scroll-target="#covid-19-response-and-resilience-planning"><span class="header-section-number">1.1.4</span> 4. COVID-19 Response and Resilience Planning</a></li>
+  <li><a href="#career-services-and-alumni-relations" id="toc-career-services-and-alumni-relations" class="nav-link" data-scroll-target="#career-services-and-alumni-relations"><span class="header-section-number">1.1.5</span> 5. Career Services and Alumni Relations</a></li>
+  </ul></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">1.2</span> Conclusion</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="helloNGS.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Graduate Journey: Education and Labour Market Realities in Canada</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Fuxi Ma <a href="mailto:fuxi.ma@outlook.com" class="email">fuxi.ma@outlook.com</a> </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="national-graduates-survey--class-of-2020-data-collected-in-2023" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="national-graduates-survey--class-of-2020-data-collected-in-2023"><span class="header-section-number">0.1</span> National Graduates Survey- class of 2020 (Data collected in 2023)</h2>
+<div id="4eead8e6" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the CSV file</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read the CSV file into a pandas DataFrame</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_csv(<span class="st">'ngs2020.csv'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Display basic information about the dataset</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">"&lt;span style='color: green'&gt;Dataset information:&lt;/span&gt;"</span>))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Number of rows: </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Number of columns: </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    df.info()</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">"&lt;span style='color: green'&gt;Column names:&lt;/span&gt;"</span>))</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">" "</span>.join(<span class="bu">list</span>(df.columns)),<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Number of missing data</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    missing_data <span class="op">=</span> df.isnull().<span class="bu">sum</span>().<span class="bu">sum</span>()</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> missing_data <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\033</span><span class="ss">[30;43mThere are no missing data.</span><span class="ch">\033</span><span class="ss">[0m"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\033</span><span class="ss">[30;43mThere are </span><span class="sc">{</span>missing_data<span class="sc">}</span><span class="ss"> missing data.</span><span class="ch">\033</span><span class="ss">[0m"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Error: The file 'ngs2020.csv' was not found in the current directory."</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pd.errors.EmptyDataError:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Error: The file 'ngs2020.csv' is empty."</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> pd.errors.ParserError:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Error: There was an issue parsing the CSV file. Check if it's properly formatted."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span style="color: green">Dataset information:</span></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of rows: 16138
+Number of columns: 114
+
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 16138 entries, 0 to 16137
+Columns: 114 entries, PUMFID to DDIS_FL
+dtypes: int64(114)
+memory usage: 14.0 MB
+
+</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span style="color: green">Column names:</span></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>PUMFID CERTLEVP REG_INST REG_RESP PGMCIPAP PGM_P034 PGM_P036 PGM_P100 PGM_P111 PGM_280A PGM_280B PGM_280C PGM_280D PGM_280E PGM_280F PGM_290 PGM_350 PGM_380 PGM_P401 PGM_410 PGM_415 PGM_430 COV_010 COV_070 COV_080 EDU_010 EDU_P020 HLOSINTP STL_010 STL_020 STULOANS STL_030 OWESLGD OWEGVIN STL_080 STL_100A STL_100B STL_100C STL_100D STL_130 STL_150 STL_160B STL_160C STL_160D STL_160E STL_160F STL_160G STL_160H STL_160I STL_160J STL_160L STLP160N SRCFUND STL_170A STL_170B STL_170C STL_170D STL_170E STL_170F STL_170G STL_170H STL_170I STL_170J STL_170L STLP170N RESPP STL_190 DBTOTGRD DBTALGRD DBTOTINT DBTALINT SCHOLARP LMA_010 LFSTATP LMA2_07 LMA3_P01 LFCINDP LFCOCCP LFWFTPTP LMA6_05 LMA6_08 JOBQLEVP JOBQLGRD JOBQLINT LMA6_11 LMA6_12 LMA6_13A LMA6_13B LMA6_13C JOBINCP LMA6_15 AFT_P010 AFT_P020 AFT_P040 AFT_050 AFT_070 AFT_080 AFT_090 BEF_P140 BEF_160 PREVLEVP HLOSGRDP PAR1GRD PAR1INT PAR2GRD PAR2INT GRADAGEP GENDER2 MS_P01 MS_P02 CTZSHIPP VISBMINP PERSINCP DDIS_FL 
+
+
+
+<span class="ansi-black-fg ansi-yellow-bg">There are no missing data.</span>
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="ngs-questions" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="ngs-questions"><span class="header-section-number">0.2</span> NGS Questions</h2>
+<div id="e4ae82a5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Path to the YAML file</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'ngs2020_questions.yaml'</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Open and load the YAML file</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        questions <span class="op">=</span> yaml.safe_load(<span class="bu">file</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print the loaded question structure</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="ch">\033</span><span class="ss">[32m</span><span class="ch">\n</span><span class="ss">PUMFID: </span><span class="ch">\033</span><span class="ss">[0m Public Use Microdata File ID - </span><span class="sc">{</span>questions[<span class="st">"PUMFID"</span>]<span class="sc">}</span><span class="ch">\n</span><span class="ss">'</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Questions (</span><span class="sc">{</span><span class="bu">len</span>(questions)<span class="op">-</span><span class="dv">1</span><span class="sc">}</span><span class="ss">):</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> question <span class="kw">in</span> questions:</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> question <span class="op">!=</span> <span class="st">'PUMFID'</span>:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'</span><span class="ch">\033</span><span class="ss">[32m</span><span class="sc">{</span>question<span class="sc">}</span><span class="ss">: </span><span class="ch">\033</span><span class="ss">[0m </span><span class="sc">{</span>questions[question]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error: File '</span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss">' not found."</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> yaml.YAMLError <span class="im">as</span> e:</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error parsing YAML file: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg">
+
+PUMFID: </span> Public Use Microdata File ID - Randomly generated record identifier for the PUMF file
+
+
+
+Questions (113):
+
+
+
+<span class="ansi-green-fg">CERTLEVP: </span> 2020 Program - Level of study - Grouping
+
+<span class="ansi-green-fg">REG_INST: </span> 2020 Program - Region of postsecondary educational institution
+
+<span class="ansi-green-fg">REG_RESP: </span> Time of interview 2023 - Region of primary residence
+
+<span class="ansi-green-fg">PGMCIPAP: </span> 2020 Program - Aggregated CIP 2021
+
+<span class="ansi-green-fg">PGM_P034: </span> 2020 Program - Full-time or part-time student
+
+<span class="ansi-green-fg">PGM_P036: </span> 2020 Program - Reason did not take program full-time
+
+<span class="ansi-green-fg">PGM_P100: </span> Work placement during program
+
+<span class="ansi-green-fg">PGM_P111: </span> Work placement during prog - Description
+
+<span class="ansi-green-fg">PGM_280A: </span> Entrepreneurial skills - Started a business
+
+<span class="ansi-green-fg">PGM_280B: </span> Entrepreneurial skills - Completed courses
+
+<span class="ansi-green-fg">PGM_280C: </span> Entrepreneurial skills - Business plan or pitch competition
+
+<span class="ansi-green-fg">PGM_280D: </span> Entrepreneurial skills - Visited an entrepreneurship centre
+
+<span class="ansi-green-fg">PGM_280E: </span> Entrepreneurial skills - Worked on an entrepreneurship project
+
+<span class="ansi-green-fg">PGM_280F: </span> Entrepreneurial skills - None of the above
+
+<span class="ansi-green-fg">PGM_290: </span> 2020 Program - Worked during program
+
+<span class="ansi-green-fg">PGM_350: </span> 2020 Program - Volunteer activities during program
+
+<span class="ansi-green-fg">PGM_380: </span> 2020 Program - Components taken outside of Canada
+
+<span class="ansi-green-fg">PGM_P401: </span> 2020 Program - Online or distance education
+
+<span class="ansi-green-fg">PGM_410: </span> 2020 Program - Main factor in choice of postsecondary institution
+
+<span class="ansi-green-fg">PGM_415: </span> 2020 Program - Main factor in choice of program
+
+<span class="ansi-green-fg">PGM_430: </span> 2020 Program - Choose the same field of study or specialization again
+
+<span class="ansi-green-fg">COV_010: </span> COVID-19 - Completion of program delayed
+
+<span class="ansi-green-fg">COV_070: </span> COVID-19 - Plans for further postsecondary education changed
+
+<span class="ansi-green-fg">COV_080: </span> COVID-19 - Employment status/plans affected
+
+<span class="ansi-green-fg">EDU_010: </span> After 2020 program - Other postsecondary programs taken
+
+<span class="ansi-green-fg">EDU_P020: </span> After 2020 program - Number of other programs taken
+
+<span class="ansi-green-fg">HLOSINTP: </span> Time of interview 2023 - Aggregated highest level of ed. completed
+
+<span class="ansi-green-fg">STL_010: </span> Government-student loan program - Applied
+
+<span class="ansi-green-fg">STL_020: </span> Government-student loan program - Applications approved
+
+<span class="ansi-green-fg">STULOANS: </span> Government-student loan program - Received
+
+<span class="ansi-green-fg">STL_030: </span> Government-student loan program - Main reason did not apply
+
+<span class="ansi-green-fg">OWESLGD: </span> Government-student loan program - Debt size - Graduation 2020
+
+<span class="ansi-green-fg">OWEGVIN: </span> Government-student loan program - Debt size - Interview 2023
+
+<span class="ansi-green-fg">STL_080: </span> Government-student loan program - Remission/debt reduction/loan forg.
+
+<span class="ansi-green-fg">STL_100A: </span> Received government assistance: Repayment assistance plan
+
+<span class="ansi-green-fg">STL_100B: </span> Received government assistance: Revision of terms
+
+<span class="ansi-green-fg">STL_100C: </span> Received government assistance: Interest only payments
+
+<span class="ansi-green-fg">STL_100D: </span> Received government assistance: None of the above
+
+<span class="ansi-green-fg">STL_130: </span> Government-student loan program - Total repayment term
+
+<span class="ansi-green-fg">STL_150: </span> Government-student loan program - Repaymt of loan from financial inst.
+
+<span class="ansi-green-fg">STL_160B: </span> Sources of funding - RESP
+
+<span class="ansi-green-fg">STL_160C: </span> Sources of funding - Government grants or bursaries
+
+<span class="ansi-green-fg">STL_160D: </span> Sources of funding - Non-government grants or bursaries
+
+<span class="ansi-green-fg">STL_160E: </span> Sources of funding - Scholarships or awards
+
+<span class="ansi-green-fg">STL_160F: </span> Sources of funding - Employment earnings or savings
+
+<span class="ansi-green-fg">STL_160G: </span> Sources of funding - Research or teaching assistantship
+
+<span class="ansi-green-fg">STL_160H: </span> Sources of funding - Parents, family, friends
+
+<span class="ansi-green-fg">STL_160I: </span> Sources of funding - Bank or institution loans
+
+<span class="ansi-green-fg">STL_160J: </span> Sources of funding - Credit cards
+
+<span class="ansi-green-fg">STL_160L: </span> Sources of funding - Employer
+
+<span class="ansi-green-fg">STLP160N: </span> Sources of funding - Other
+
+<span class="ansi-green-fg">SRCFUND: </span> Sources of funding - Number of sources  - All postsecondary edu
+
+<span class="ansi-green-fg">STL_170A: </span> Main source of funding - Government student loans
+
+<span class="ansi-green-fg">STL_170B: </span> Main source of funding - RESP
+
+<span class="ansi-green-fg">STL_170C: </span> Main source of funding - Government grants or bursaries
+
+<span class="ansi-green-fg">STL_170D: </span> Main source of funding - Non-government grants or bursaries
+
+<span class="ansi-green-fg">STL_170E: </span> Main source of funding - Scholarships or awards
+
+<span class="ansi-green-fg">STL_170F: </span> Main source of funding - Employment earnings or savings
+
+<span class="ansi-green-fg">STL_170G: </span> Main source of funding - Research or teaching assistantship
+
+<span class="ansi-green-fg">STL_170H: </span> Main source of funding - Parents, family, friends
+
+<span class="ansi-green-fg">STL_170I: </span> Main source of funding - Bank or institution loans
+
+<span class="ansi-green-fg">STL_170J: </span> Main source of funding - Credit cards
+
+<span class="ansi-green-fg">STL_170L: </span> Main source of funding - Employer
+
+<span class="ansi-green-fg">STLP170N: </span> Main source of funding - Other
+
+<span class="ansi-green-fg">RESPP: </span> RESP - Total amount received for postsecondary education
+
+<span class="ansi-green-fg">STL_190: </span> Repay loans from family or friends for education
+
+<span class="ansi-green-fg">DBTOTGRD: </span> Loans at graduation 2020 - Debt size of non-government loans (range)
+
+<span class="ansi-green-fg">DBTALGRD: </span> Loans at graduation 2020 - Debt size of all loans
+
+<span class="ansi-green-fg">DBTOTINT: </span> Time of interview 2023 - Debt size of non-government loans (range)
+
+<span class="ansi-green-fg">DBTALINT: </span> Time of interview 2023 - Debt size of all loan
+
+<span class="ansi-green-fg">SCHOLARP: </span> Total amount received from scholarships/awards/fellowships and prizes
+
+<span class="ansi-green-fg">LMA_010: </span> Reference week - Attended school, college, CEGEP or university
+
+<span class="ansi-green-fg">LFSTATP: </span> Reference week - Labour force status
+
+<span class="ansi-green-fg">LMA2_07: </span> Reference week - More than one job or business
+
+<span class="ansi-green-fg">LMA3_P01: </span> Reference week - Employee or self-employed
+
+<span class="ansi-green-fg">LFCINDP: </span> Reference week - Sector for job
+
+<span class="ansi-green-fg">LFCOCCP: </span> Reference week - Broad occupational category for job
+
+<span class="ansi-green-fg">LFWFTPTP: </span> Reference week - Full-time or part-time status of job or business
+
+<span class="ansi-green-fg">LMA6_05: </span> Reference week - Job permanent or not permanent
+
+<span class="ansi-green-fg">LMA6_08: </span> Reference week - Main method used to find job
+
+<span class="ansi-green-fg">JOBQLEVP: </span> Reference week - Aggregated level of studies required to get job
+
+<span class="ansi-green-fg">JOBQLGRD: </span> Reference week - Qualification for job compared to 2020 program
+
+<span class="ansi-green-fg">JOBQLINT: </span> Reference week - Qualification job vs level of education
+
+<span class="ansi-green-fg">LMA6_11: </span> Reference week - Relatedness of job or business to 2020 program
+
+<span class="ansi-green-fg">LMA6_12: </span> Reference week - Qualification level for job
+
+<span class="ansi-green-fg">LMA6_13A: </span> Reference week - Satisfied with overall job
+
+<span class="ansi-green-fg">LMA6_13B: </span> Reference week - Satisfied with wage or salary of job
+
+<span class="ansi-green-fg">LMA6_13C: </span> Reference week - Satisfied with job security
+
+<span class="ansi-green-fg">JOBINCP: </span> Reference week - Annual wage or salary for job
+
+<span class="ansi-green-fg">LMA6_15: </span> After program 2020 - First job
+
+<span class="ansi-green-fg">AFT_P010: </span> After 2020 program - Number of jobs or businesses
+
+<span class="ansi-green-fg">AFT_P020: </span> After 2020 Program - Length of time until first job or business
+
+<span class="ansi-green-fg">AFT_P040: </span> After 2020 program - Employee or self-employed - 1st job or business
+
+<span class="ansi-green-fg">AFT_050: </span> After 2020 program - Full-time or part-time - 1st job or business
+
+<span class="ansi-green-fg">AFT_070: </span> After 2020 program - Permanent/not permanent  - 1st job or business
+
+<span class="ansi-green-fg">AFT_080: </span> After 2020 program - Reason job not permanent  - 1st job or business
+
+<span class="ansi-green-fg">AFT_090: </span> After 2020 program - Relatedness of 1st job/business to program
+
+<span class="ansi-green-fg">BEF_P140: </span> Before 2020 Program - Main activity during 12 months before
+
+<span class="ansi-green-fg">BEF_160: </span> Before 2020 program - Number of months of work experience
+
+<span class="ansi-green-fg">PREVLEVP: </span> Before 2020 program - Aggregated highest level of studies completed
+
+<span class="ansi-green-fg">HLOSGRDP: </span> 2020 Program - Highest level of education completed
+
+<span class="ansi-green-fg">PAR1GRD: </span> 2020 Program - Level of education compared to that of one parent
+
+<span class="ansi-green-fg">PAR1INT: </span> Time of interview 2023 - Level of education vs of one parent
+
+<span class="ansi-green-fg">PAR2GRD: </span> 2020 Program - Level of education vs of the other parent
+
+<span class="ansi-green-fg">PAR2INT: </span> Time of interview 2023 - Level of education vs that of other parent
+
+<span class="ansi-green-fg">GRADAGEP: </span> 2020 Program - Age at time of graduation - Grouping
+
+<span class="ansi-green-fg">GENDER2: </span> Gender after distribution of non-binary persons
+
+<span class="ansi-green-fg">MS_P01: </span> Marital status
+
+<span class="ansi-green-fg">MS_P02: </span> Have any dependent children
+
+<span class="ansi-green-fg">CTZSHIPP: </span> Time of interview 2023 - Status in Canada
+
+<span class="ansi-green-fg">VISBMINP: </span> Self-identified as a member of a visible minority group
+
+<span class="ansi-green-fg">PERSINCP: </span> Total personal income in 2022
+
+<span class="ansi-green-fg">DDIS_FL: </span> Disability status
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="response-code" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="response-code"><span class="header-section-number">0.3</span> Response code</h2>
+<div id="d7f6c083" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the yaml module</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the file exists before attempting to load it</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">"ngs2020_responses.yaml"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(file_path):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Open and load the YAML file</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Load the YAML content into a Python object (typically a dictionary)</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            responses <span class="op">=</span> yaml.safe_load(<span class="bu">file</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Print the first few items to verify the responses loaded correctly</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            display(Markdown(<span class="ss">f"&lt;span style='color: green'&gt;Response code defination (</span><span class="sc">{</span><span class="bu">len</span>(responses)<span class="sc">}</span><span class="ss">):&lt;/span&gt;"</span>))</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            k <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> response <span class="kw">in</span> responses:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> k <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">break</span>  <span class="co"># print out 10 only</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f'</span><span class="ch">\033</span><span class="ss">[32m</span><span class="sc">{</span>response<span class="sc">}</span><span class="ss">:</span><span class="ch">\033</span><span class="ss">[0m'</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> code <span class="kw">in</span> responses[response]:</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">print</span>(<span class="ss">f'  </span><span class="ch">\033</span><span class="ss">[32m</span><span class="sc">{</span>code<span class="sc">}</span><span class="ss">: </span><span class="ch">\033</span><span class="ss">[0m</span><span class="sc">{</span>responses[response][code]<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>                k <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> yaml.YAMLError <span class="im">as</span> e:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Error parsing YAML file: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"File not found: </span><span class="sc">{</span>file_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Please make sure the file exists in the current working directory."</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Current working directory: </span><span class="sc">{</span>os<span class="sc">.</span>getcwd()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><span style="color: green">Response code defination (113):</span></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-green-fg">AFT_050:</span>
+
+  <span class="ansi-green-fg">1: </span>Full time
+
+  <span class="ansi-green-fg">2: </span>Part time
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">AFT_070:</span>
+
+  <span class="ansi-green-fg">1: </span>Permanent
+
+  <span class="ansi-green-fg">2: </span>Not permanent
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">AFT_080:</span>
+
+  <span class="ansi-green-fg">1: </span>Seasonal job
+
+  <span class="ansi-green-fg">2: </span>Temporary, term or contract job
+
+  <span class="ansi-green-fg">3: </span>Casual job
+
+  <span class="ansi-green-fg">4: </span>Other
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">AFT_090:</span>
+
+  <span class="ansi-green-fg">1: </span>Closely related
+
+  <span class="ansi-green-fg">2: </span>Somewhat related
+
+  <span class="ansi-green-fg">3: </span>Not at all related
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">LMA6_11:</span>
+
+  <span class="ansi-green-fg">1: </span>Closely related
+
+  <span class="ansi-green-fg">2: </span>Somewhat related
+
+  <span class="ansi-green-fg">3: </span>Not at all related
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">AFT_P010:</span>
+
+  <span class="ansi-green-fg">0: </span>0
+
+  <span class="ansi-green-fg">1: </span>1
+
+  <span class="ansi-green-fg">2: </span>2
+
+  <span class="ansi-green-fg">3: </span>3
+
+  <span class="ansi-green-fg">4: </span>4 or more
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">AFT_P020:</span>
+
+  <span class="ansi-green-fg">1: </span>Already working at a job or business
+
+  <span class="ansi-green-fg">2: </span>Less than 6 months
+
+  <span class="ansi-green-fg">3: </span>6 months to less than 12 months
+
+  <span class="ansi-green-fg">4: </span>1 year or more
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">AFT_P040:</span>
+
+  <span class="ansi-green-fg">1: </span>Employee
+
+  <span class="ansi-green-fg">2: </span>Self-employed / Working in a family business without pay
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">LMA3_P01:</span>
+
+  <span class="ansi-green-fg">1: </span>Employee
+
+  <span class="ansi-green-fg">2: </span>Self-employed / Working in a family business without pay
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+
+<span class="ansi-green-fg">BEF_160:</span>
+
+  <span class="ansi-green-fg">1: </span>None
+
+  <span class="ansi-green-fg">2: </span>Less than 12 months
+
+  <span class="ansi-green-fg">3: </span>12 months to less than 24 months
+
+  <span class="ansi-green-fg">4: </span>24 months to less than 36 months
+
+  <span class="ansi-green-fg">5: </span>36 months to less than 48 months
+
+  <span class="ansi-green-fg">6: </span>48 months or more
+
+  <span class="ansi-green-fg">96: </span>Valid skip
+
+  <span class="ansi-green-fg">97: </span>Don't know
+
+  <span class="ansi-green-fg">98: </span>Refusal
+
+  <span class="ansi-green-fg">99: </span>Not stated
+
+<span class="ansi-green-fg">BEF_P140:</span>
+
+  <span class="ansi-green-fg">1: </span>Working at a job or business
+
+  <span class="ansi-green-fg">2: </span>Looking for work
+
+  <span class="ansi-green-fg">3: </span>Going to school
+
+  <span class="ansi-green-fg">4: </span>Personal
+
+  <span class="ansi-green-fg">5: </span>Other
+
+  <span class="ansi-green-fg">6: </span>Valid skip
+
+  <span class="ansi-green-fg">7: </span>Don't know
+
+  <span class="ansi-green-fg">8: </span>Refusal
+
+  <span class="ansi-green-fg">9: </span>Not stated
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-all-ngs-tables-to-excel" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="extract-all-ngs-tables-to-excel"><span class="header-section-number">0.4</span> Extract All NGS Tables to Excel</h2>
+<div id="463ec2f4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %run Extract_All_NGS_Tables_to_Excel.ipynb`</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"All tables saved to NGS_Tables.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>All tables saved to NGS_Tables.xlsx</code></pre>
+</div>
+</div>
+<section id="fuction-for-getting-ngs-table" class="level3" data-number="0.4.1">
+<h3 data-number="0.4.1" class="anchored" data-anchor-id="fuction-for-getting-ngs-table"><span class="header-section-number">0.4.1</span> Fuction for getting NGS table</h3>
+<div id="02a39914" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get NGS table</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_NGS_table(table_name <span class="op">=</span> <span class="st">'AFT_050'</span>, excel_file<span class="op">=</span><span class="st">"NGS_Tables.xlsx"</span>):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Read the Excel sheet into a DataFrame, using first row as headers</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.read_excel(excel_file, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                          sheet_name<span class="op">=</span>table_name, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                          header<span class="op">=</span><span class="dv">0</span>)  <span class="co"># header=0 is default but making it explicit</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">'</span><span class="ch">\033</span><span class="ss">[32m</span><span class="sc">{</span>table_name<span class="sc">}</span><span class="ch">\033</span><span class="ss">[0m': </span><span class="sc">{</span>questions[table_name]<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        df</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> df</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error loading table </span><span class="sc">{</span>table_name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="data-analysis" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="data-analysis"><span class="header-section-number">0.5</span> Data Analysis</h2>
+<section id="distribution-of-personal-income-in-2022" class="level3" data-number="0.5.1">
+<h3 data-number="0.5.1" class="anchored" data-anchor-id="distribution-of-personal-income-in-2022"><span class="header-section-number">0.5.1</span> Distribution of Personal Income in 2022</h3>
+<div id="629440ef" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming your DataFrame is named 'df'</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># First let's clean up the column names and data if needed</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> get_NGS_table(<span class="st">"PERSINCP"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>df.columns <span class="op">=</span> [<span class="st">'Answer Categories'</span>, <span class="st">'Code'</span>, <span class="st">'Frequency'</span>, <span class="st">'Weighted Frequency'</span>, <span class="st">'%'</span>]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean any whitespace or formatting issues in the numeric columns</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Frequency'</span>] <span class="op">=</span> df[<span class="st">'Frequency'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Weighted Frequency'</span>] <span class="op">=</span> df[<span class="st">'Weighted Frequency'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'%'</span>] <span class="op">=</span> df[<span class="st">'%'</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix the income range labels by combining with the previous row's dollar sign</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>):</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> df.loc[i, <span class="st">'Answer Categories'</span>].startswith(<span class="st">'$'</span>):</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        df.loc[i, <span class="st">'Answer Categories'</span>] <span class="op">=</span> <span class="st">'$'</span> <span class="op">+</span> df.loc[i, <span class="st">'Answer Categories'</span>]</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove 'Not stated' for clearer analysis of income distribution</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>df_income <span class="op">=</span> df[df[<span class="st">'Code'</span>] <span class="op">!=</span> <span class="dv">99</span>].copy()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Set style</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">5</span>))</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar plot - using '%' column for y-axis</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Answer Categories'</span>, </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'%'</span>, </span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df_income,</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span><span class="st">"viridis"</span>,</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    edgecolor<span class="op">=</span><span class="st">'black'</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize plot</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Personal Income in 2022 (Excluding "Not Stated")'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Income Range'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage of Graduates (%)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Add value labels</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    ax.annotate(</span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'</span><span class="sc">{</span>p<span class="sc">.</span>get_height()<span class="sc">:.1f}</span><span class="ss">%'</span>, </span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        (p.get_x() <span class="op">+</span> p.get_width() <span class="op">/</span> <span class="fl">2.</span>, p.get_height()), </span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">'center'</span>, </span>
+<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">'center'</span>, </span>
+<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>        xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), </span>
+<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>        textcoords<span class="op">=</span><span class="st">'offset points'</span>,</span>
+<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>        fontsize<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust layout</span></span>
+<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Additional analysis</span></span>
+<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Key Statistics:"</span>)</span>
+<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total respondents (excluding 'Not stated'): </span><span class="sc">{</span>df_income[<span class="st">'Frequency'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>median_category <span class="op">=</span> df_income[df_income[<span class="st">'%'</span>].cumsum() <span class="op">&gt;=</span> <span class="dv">50</span>].iloc[<span class="dv">0</span>][<span class="st">'Answer Categories'</span>]</span>
+<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Median income category: </span><span class="sc">{</span>median_category<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Highest proportion category: </span><span class="sc">{</span>df_income<span class="sc">.</span>loc[df_income[<span class="st">'%'</span>].idxmax(), <span class="st">'Answer Categories'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>df_income[<span class="st">'%'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pie chart for another visualization</span></span>
+<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>plt.pie(</span>
+<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>    df_income[<span class="st">'%'</span>],</span>
+<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>df_income[<span class="st">'Answer Categories'</span>],</span>
+<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>    autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>    startangle<span class="op">=</span><span class="dv">90</span>,</span>
+<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>    colors<span class="op">=</span>sns.color_palette(<span class="st">"viridis"</span>, <span class="bu">len</span>(df_income)),</span>
+<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>    wedgeprops<span class="op">=</span>{<span class="st">'edgecolor'</span>: <span class="st">'black'</span>, <span class="st">'linewidth'</span>: <span class="fl">0.5</span>},</span>
+<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>    textprops<span class="op">=</span>{<span class="st">'fontsize'</span>: <span class="dv">10</span>}</span>
+<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weighted Income Distribution of 2020 Graduates in 2022'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>'<span class="ansi-green-fg">PERSINCP</span>': Total personal income in 2022
+
+
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\Fuxim\AppData\Local\Temp\ipykernel_6480\1503766661.py:28: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.barplot(</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-7-output-3.png" width="586" height="469" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Key Statistics:
+Total respondents (excluding 'Not stated'): 13,130
+Median income category: $50,000 to $69,999
+Highest proportion category: $30,000 to $49,999 (20.6%)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-7-output-5.png" width="497" height="404" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="age-distribution-at-graduation" class="level3" data-number="0.5.2">
+<h3 data-number="0.5.2" class="anchored" data-anchor-id="age-distribution-at-graduation"><span class="header-section-number">0.5.2</span> Age Distribution at Graduation</h3>
+<div id="5a3e177e" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming your DataFrame is named 'df_gradage'</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>df_gradage <span class="op">=</span> get_NGS_table(<span class="st">'GRADAGEP'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>df_gradage[<span class="st">'Frequency'</span>] <span class="op">=</span> df_gradage[<span class="st">'Frequency'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>df_gradage[<span class="st">'Weighted Frequency'</span>] <span class="op">=</span> df_gradage[<span class="st">'Weighted Frequency'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>df_gradage[<span class="st">'%'</span>] <span class="op">=</span> df_gradage[<span class="st">'%'</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove 'Total' and 'Not stated' rows for analysis</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>df_age <span class="op">=</span> df_gradage[<span class="op">~</span>df_gradage[<span class="st">'Code'</span>].isin([<span class="dv">9</span>, <span class="bu">float</span>(<span class="st">'nan'</span>)])].copy()</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set style</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'font.size'</span>] <span class="op">=</span> <span class="dv">8</span>  <span class="co"># Global font size reduction</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Compact Bar Chart (6x4 inches)</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.barplot(</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'Answer Categories'</span>, </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">'%'</span>, </span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>df_age,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    palette<span class="op">=</span><span class="st">"mako"</span>,  <span class="co"># Professional blue gradient</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    edgecolor<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize plot</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Age Distribution at Graduation (Class of 2020)'</span>, fontsize<span class="op">=</span><span class="dv">9</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age Group'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage (%)'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">25</span>, ha<span class="op">=</span><span class="st">'right'</span>)  <span class="co"># Slight rotation for readability</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Add precise value labels</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> ax.patches:</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>    ax.annotate(</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f'</span><span class="sc">{</span>p<span class="sc">.</span>get_height()<span class="sc">:.1f}</span><span class="ss">%'</span>, </span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>        (p.get_x() <span class="op">+</span> p.get_width()<span class="op">/</span><span class="fl">2.</span>, p.get_height()), </span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>        ha<span class="op">=</span><span class="st">'center'</span>, </span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>        va<span class="op">=</span><span class="st">'center'</span>, </span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>        xytext<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">4</span>), </span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>        textcoords<span class="op">=</span><span class="st">'offset points'</span>,</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>        fontsize<span class="op">=</span><span class="dv">7</span>,</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>        bbox<span class="op">=</span><span class="bu">dict</span>(boxstyle<span class="op">=</span><span class="st">'round,pad=0.2'</span>, fc<span class="op">=</span><span class="st">'white'</span>, ec<span class="op">=</span><span class="st">'none'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Compact Pie Chart (5x5 inches)</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>wedges, texts, autotexts <span class="op">=</span> plt.pie(</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>    df_age[<span class="st">'%'</span>],</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>df_age[<span class="st">'Answer Categories'</span>],</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>    autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>,</span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>    startangle<span class="op">=</span><span class="dv">90</span>,</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>    colors<span class="op">=</span>sns.color_palette(<span class="st">"mako"</span>, <span class="bu">len</span>(df_age)),</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>    wedgeprops<span class="op">=</span>{<span class="st">'edgecolor'</span>: <span class="st">'black'</span>, <span class="st">'linewidth'</span>: <span class="fl">0.5</span>},</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>    textprops<span class="op">=</span>{<span class="st">'fontsize'</span>: <span class="dv">7</span>},</span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a>    pctdistance<span class="op">=</span><span class="fl">0.8</span>  <span class="co"># Pull percentages inward</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Improve label readability</span></span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>plt.setp(texts, fontsize<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>plt.setp(autotexts, fontsize<span class="op">=</span><span class="dv">7</span>, color<span class="op">=</span><span class="st">'white'</span>, weight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Age at Graduation'</span>, fontsize<span class="op">=</span><span class="dv">9</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Detailed Analysis</span></span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== Age at Graduation Analysis ==="</span>)</span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total graduates analyzed: </span><span class="sc">{</span>df_age[<span class="st">'Frequency'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Age Group Distribution:"</span>)</span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, row <span class="kw">in</span> df_age.iterrows():</span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'Answer Categories'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>row[<span class="st">'%'</span>]<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Key Insights:"</span>)</span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"• Majority group: </span><span class="sc">{</span>df_age<span class="sc">.</span>loc[df_age[<span class="st">'%'</span>].idxmax(), <span class="st">'Answer Categories'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>df_age[<span class="st">'%'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"• Under 30: </span><span class="sc">{</span>df_age[df_age[<span class="st">'Code'</span>].isin([<span class="fl">1.0</span>, <span class="fl">2.0</span>])][<span class="st">'%'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"• 30+: </span><span class="sc">{</span>df_age[df_age[<span class="st">'Code'</span>].isin([<span class="fl">3.0</span>, <span class="fl">4.0</span>])][<span class="st">'%'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:.1f}</span><span class="ss">%"</span>)</span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"• Median age group: </span><span class="sc">{</span>df_age<span class="sc">.</span>loc[df_age[<span class="st">'%'</span>].cumsum() <span class="op">&gt;=</span> <span class="dv">50</span>, <span class="st">'Answer Categories'</span>]<span class="sc">.</span>iloc[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>'<span class="ansi-green-fg">GRADAGEP</span>': 2020 Program - Age at time of graduation - Grouping
+
+
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\Fuxim\AppData\Local\Temp\ipykernel_6480\432788408.py:21: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.barplot(</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-8-output-3.png" width="572" height="380" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-8-output-4.png" width="375" height="381" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+=== Age at Graduation Analysis ===
+Total graduates analyzed: 16,056
+
+Age Group Distribution:
+Under 25: 54.0%
+25-29: 23.2%
+30-39: 14.4%
+40+: 8.0%
+
+Key Insights:
+• Majority group: Under 25 (54.0%)
+• Under 30: 77.2%
+• 30+: 22.4%
+• Median age group: Under 25</code></pre>
+</div>
+</div>
+</section>
+<section id="gender-distribution" class="level3" data-number="0.5.3">
+<h3 data-number="0.5.3" class="anchored" data-anchor-id="gender-distribution"><span class="header-section-number">0.5.3</span> Gender Distribution</h3>
+<div id="dfec3012" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the DataFrame from the provided data</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> get_NGS_table(<span class="st">"GENDER2"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the "Total" row for analysis</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">'Answer Categories'</span>] <span class="op">!=</span> <span class="st">'Total'</span>]</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert string numbers with commas to integers</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Frequency'</span>] <span class="op">=</span> df[<span class="st">'Frequency'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Weighted Frequency'</span>] <span class="op">=</span> df[<span class="st">'Weighted Frequency'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency Plot</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>plt.bar(df[<span class="st">'Answer Categories'</span>], df[<span class="st">'Frequency'</span>], color<span class="op">=</span>[<span class="st">'blue'</span>, <span class="st">'pink'</span>])</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Frequency Distribution by Gender'</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Gender'</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(df[<span class="st">'Frequency'</span>]):</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    plt.text(i, v <span class="op">+</span> <span class="dv">100</span>, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">:,}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">'center'</span>)  <span class="co"># Format with commas</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage Plot</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>plt.pie(df[<span class="st">'%'</span>], labels<span class="op">=</span>df[<span class="st">'Answer Categories'</span>], </span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, colors<span class="op">=</span>[<span class="st">'blue'</span>, <span class="st">'pink'</span>],</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>        startangle<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Percentage Distribution by Gender'</span>)</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Weighted Frequency Plot</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>plt.bar(df[<span class="st">'Answer Categories'</span>], df[<span class="st">'Weighted Frequency'</span>], </span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>[<span class="st">'blue'</span>, <span class="st">'pink'</span>])</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weighted Frequency Distribution by Gender'</span>)</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Gender'</span>)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Weighted Count'</span>)</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(df[<span class="st">'Weighted Frequency'</span>]):</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    plt.text(i, v <span class="op">+</span> <span class="dv">5000</span>, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">:,}</span><span class="ss">"</span>, ha<span class="op">=</span><span class="st">'center'</span>)  <span class="co"># Format with commas</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Display some statistics</span></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Summary Statistics:"</span>)</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Respondents: </span><span class="sc">{</span>df[<span class="st">'Frequency'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Men+: </span><span class="sc">{</span>df[df[<span class="st">'Answer Categories'</span>] <span class="op">==</span> <span class="st">'Men+'</span>][<span class="st">'Frequency'</span>]<span class="sc">.</span>values[<span class="dv">0</span>]<span class="sc">:,}</span><span class="ss"> "</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"(</span><span class="sc">{</span>df[df[<span class="st">'Answer Categories'</span>] <span class="op">==</span> <span class="st">'Men+'</span>][<span class="st">'%'</span>]<span class="sc">.</span>values[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">%)"</span>)</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Women+: </span><span class="sc">{</span>df[df[<span class="st">'Answer Categories'</span>] <span class="op">==</span> <span class="st">'Women+'</span>][<span class="st">'Frequency'</span>]<span class="sc">.</span>values[<span class="dv">0</span>]<span class="sc">:,}</span><span class="ss"> "</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>      <span class="ss">f"(</span><span class="sc">{</span>df[df[<span class="st">'Answer Categories'</span>] <span class="op">==</span> <span class="st">'Women+'</span>][<span class="st">'%'</span>]<span class="sc">.</span>values[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">%)"</span>)</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Weighted Total: </span><span class="sc">{</span>df[<span class="st">'Weighted Frequency'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Men+ (weighted): </span><span class="sc">{</span>df[df[<span class="st">'Answer Categories'</span>] <span class="op">==</span> <span class="st">'Men+'</span>][<span class="st">'Weighted Frequency'</span>]<span class="sc">.</span>values[<span class="dv">0</span>]<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Women+ (weighted): </span><span class="sc">{</span>df[df[<span class="st">'Answer Categories'</span>] <span class="op">==</span> <span class="st">'Women+'</span>][<span class="st">'Weighted Frequency'</span>]<span class="sc">.</span>values[<span class="dv">0</span>]<span class="sc">:,}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>'<span class="ansi-green-fg">GENDER2</span>': Gender after distribution of non-binary persons
+
+
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-9-output-2.png" width="752" height="379" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-9-output-3.png" width="451" height="366" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary Statistics:
+Total Respondents: 16,138
+Men+: 6,773 (43.3%)
+Women+: 9,365 (56.7%)
+
+Weighted Total: 532,714
+Men+ (weighted): 230,513
+Women+ (weighted): 302,201</code></pre>
+</div>
+</div>
+</section>
+<section id="distribution-by-citizenship-status" class="level3" data-number="0.5.4">
+<h3 data-number="0.5.4" class="anchored" data-anchor-id="distribution-by-citizenship-status"><span class="header-section-number">0.5.4</span> Distribution by Citizenship Status</h3>
+<div id="27dfd1bb" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the DataFrame from the provided data</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> get_NGS_table(<span class="st">"CTZSHIPP"</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the "Total" row for analysis</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">'Answer Categories'</span>] <span class="op">!=</span> <span class="st">'Total'</span>]</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert string numbers with commas to integers</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Frequency'</span>] <span class="op">=</span> df[<span class="st">'Frequency'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Weighted Frequency'</span>] <span class="op">=</span> df[<span class="st">'Weighted Frequency'</span>].<span class="bu">str</span>.replace(<span class="st">','</span>, <span class="st">''</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency Plot</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(df[<span class="st">'Answer Categories'</span>], df[<span class="st">'Frequency'</span>], </span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>[<span class="st">'green'</span>, <span class="st">'lightgreen'</span>, <span class="st">'blue'</span>, <span class="st">'gray'</span>])</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Frequency Distribution by Citizenship Status'</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Citizenship Status'</span>)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars:</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> bar.get_height()</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    plt.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="fl">2.</span>, height <span class="op">+</span> <span class="dv">100</span>,</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>             <span class="ss">f"</span><span class="sc">{</span>height<span class="sc">:,}</span><span class="ss">"</span>,</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>             ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'bottom'</span>)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage Plot</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>plt.pie(df[<span class="st">'%'</span>], labels<span class="op">=</span>df[<span class="st">'Answer Categories'</span>], </span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, </span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>        colors<span class="op">=</span>[<span class="st">'green'</span>, <span class="st">'lightgreen'</span>, <span class="st">'blue'</span>, <span class="st">'gray'</span>],</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>        startangle<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Percentage Distribution by Citizenship Status'</span>)</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Weighted Frequency Plot</span></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">4</span>))</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(df[<span class="st">'Answer Categories'</span>], df[<span class="st">'Weighted Frequency'</span>], </span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>               color<span class="op">=</span>[<span class="st">'green'</span>, <span class="st">'lightgreen'</span>, <span class="st">'blue'</span>, <span class="st">'gray'</span>])</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Weighted Frequency Distribution by Citizenship Status'</span>)</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Citizenship Status'</span>)</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Weighted Count'</span>)</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars:</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> bar.get_height()</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a>    plt.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="fl">2.</span>, height <span class="op">+</span> <span class="dv">5000</span>,</span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>             <span class="ss">f"</span><span class="sc">{</span>height<span class="sc">:,}</span><span class="ss">"</span>,</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>             ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'bottom'</span>)</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Display some statistics</span></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Summary Statistics:"</span>)</span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total Respondents: </span><span class="sc">{</span>df[<span class="st">'Frequency'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'Answer Categories'</span>]<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>row[<span class="st">'Frequency'</span>]<span class="sc">:,}</span><span class="ss"> (</span><span class="sc">{</span>row[<span class="st">'%'</span>]<span class="sc">}</span><span class="ss">%)"</span>)</span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Weighted Total: </span><span class="sc">{</span>df[<span class="st">'Weighted Frequency'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'Answer Categories'</span>]<span class="sc">}</span><span class="ss"> (weighted): </span><span class="sc">{</span>row[<span class="st">'Weighted Frequency'</span>]<span class="sc">:,}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>'<span class="ansi-green-fg">CTZSHIPP</span>': Time of interview 2023 - Status in Canada
+
+
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-10-output-2.png" width="1275" height="571" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-10-output-3.png" width="451" height="453" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary Statistics:
+Total Respondents: 16,138
+Canadian by birth: 10,785 (59.7%)
+Canadian by naturalization: 2,365 (14.4%)
+Landed immigrant: 1,680 (11.0%)
+Not stated: 1,308 (14.9%)
+
+Weighted Total: 532,714
+Canadian by birth (weighted): 318,244
+Canadian by naturalization (weighted): 76,538
+Landed immigrant (weighted): 58,679
+Not stated (weighted): 79,253</code></pre>
+</div>
+</div>
+</section>
+<section id="education-level" class="level3" data-number="0.5.5">
+<h3 data-number="0.5.5" class="anchored" data-anchor-id="education-level"><span class="header-section-number">0.5.5</span> Education Level</h3>
+<div id="7b36fad5" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get education tables (sample data structure)</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>edu_level <span class="op">=</span> get_NGS_table(<span class="st">"CERTLEVP"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create DataFrames</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>df_level <span class="op">=</span> pd.DataFrame(edu_level)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot education level distribution</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.bar(df_level[:<span class="op">-</span><span class="dv">1</span>][<span class="st">'Answer Categories'</span>], df_level[:<span class="op">-</span><span class="dv">1</span>][<span class="st">'%'</span>], color<span class="op">=</span>[<span class="st">'#1f77b4'</span>, <span class="st">'#ff7f0e'</span>, <span class="st">'#2ca02c'</span>])</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Education Levels (2020 Graduates)'</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage (%)'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(df_level[:<span class="op">-</span><span class="dv">1</span>][<span class="st">'%'</span>]):</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    plt.text(i, v<span class="op">+</span><span class="dv">1</span>, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">%"</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>field_of_study <span class="op">=</span>  get_NGS_table(<span class="st">"PGMCIPAP"</span>)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>df_field <span class="op">=</span> pd.DataFrame(field_of_study)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot field of study distribution</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>plt.barh(df_field[<span class="st">'Answer Categories'</span>], df_field[<span class="st">'%'</span>], color<span class="op">=</span><span class="st">'#9467bd'</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Field of Study Distribution (2020 Graduates)'</span>)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Percentage (%)'</span>)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(df_field[<span class="st">'%'</span>]):</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    plt.text(v<span class="op">+</span><span class="fl">0.5</span>, i, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">%"</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>'<span class="ansi-green-fg">CERTLEVP</span>': 2020 Program - Level of study - Grouping
+
+
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-11-output-2.png" width="651" height="416" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>'<span class="ansi-green-fg">PGMCIPAP</span>': 2020 Program - Aggregated CIP 2021
+
+
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-11-output-4.png" width="768" height="379" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="inter-regional-mobility-of-graduates" class="level3" data-number="0.5.6">
+<h3 data-number="0.5.6" class="anchored" data-anchor-id="inter-regional-mobility-of-graduates"><span class="header-section-number">0.5.6</span> Inter-Regional Mobility of Graduates</h3>
+<div id="366a9646" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Geographic data from NGS 2020</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>region_data <span class="op">=</span> {</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Region'</span>: [<span class="st">'Atlantic provinces'</span>, <span class="st">'Quebec'</span>, <span class="st">'Ontario'</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Western provinces, territories'</span>, <span class="st">'Not stated'</span>],</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_INST_Freq'</span>: [<span class="dv">2685</span>, <span class="dv">3647</span>, <span class="dv">3146</span>, <span class="dv">6660</span>, <span class="va">None</span>],</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_INST_Weighted'</span>: [<span class="dv">29868</span>, <span class="dv">115814</span>, <span class="dv">250939</span>, <span class="dv">136094</span>, <span class="va">None</span>],</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_INST_Pct'</span>: [<span class="fl">5.6</span>, <span class="fl">21.7</span>, <span class="fl">47.1</span>, <span class="fl">25.5</span>, <span class="va">None</span>],</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_RESP_Freq'</span>: [<span class="dv">2279</span>, <span class="dv">3549</span>, <span class="dv">3497</span>, <span class="dv">6588</span>, <span class="dv">225</span>],</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_RESP_Weighted'</span>: [<span class="dv">27544</span>, <span class="dv">114492</span>, <span class="dv">242046</span>, <span class="dv">143546</span>, <span class="dv">5086</span>],</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_RESP_Pct'</span>: [<span class="fl">5.2</span>, <span class="fl">21.5</span>, <span class="fl">45.4</span>, <span class="fl">26.9</span>, <span class="fl">1.0</span>]</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(region_data)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Comparison of Institution vs Residence Regions</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="fl">0.35</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(df)<span class="op">-</span><span class="dv">1</span>)  <span class="co"># Exclude 'Not stated'</span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>plt.bar(x <span class="op">-</span> width<span class="op">/</span><span class="dv">2</span>, df[<span class="st">'REG_INST_Pct'</span>][:<span class="op">-</span><span class="dv">1</span>], width, </span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'Institution Region'</span>, color<span class="op">=</span><span class="st">'#1f77b4'</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>plt.bar(x <span class="op">+</span> width<span class="op">/</span><span class="dv">2</span>, df[<span class="st">'REG_RESP_Pct'</span>][:<span class="op">-</span><span class="dv">1</span>], width, </span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'Residence Region'</span>, color<span class="op">=</span><span class="st">'#ff7f0e'</span>)</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Region'</span>)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Percentage (%)'</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparison of Institution vs Residence Regions (2020 Graduates)'</span>)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>plt.xticks(x, df[<span class="st">'Region'</span>][:<span class="op">-</span><span class="dv">1</span>], rotation<span class="op">=</span><span class="dv">45</span>)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">'y'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Weighted Institution Locations</span></span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>plt.pie(df[<span class="st">'REG_INST_Weighted'</span>][:<span class="op">-</span><span class="dv">1</span>], labels<span class="op">=</span>df[<span class="st">'Region'</span>][:<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>        autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, startangle<span class="op">=</span><span class="dv">90</span>,</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>        colors<span class="op">=</span>[<span class="st">'#4C72B0'</span>, <span class="st">'#55A868'</span>, <span class="st">'#C44E52'</span>, <span class="st">'#8172B2'</span>])</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribution of Institution Regions (Weighted)'</span>)</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Geographic Mobility Analysis</span></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>mobility <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Movement'</span>: [<span class="st">'Stayed in same region'</span>, <span class="st">'Moved between regions'</span>, <span class="st">'Not stated'</span>],</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Percentage'</span>: [<span class="fl">68.3</span>, <span class="fl">30.7</span>, <span class="fl">1.0</span>]  <span class="co"># Hypothetical values - actual mobility data would come from cross-tabulating REG_INST and REG_RESP</span></span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a>plt.barh(mobility[<span class="st">'Movement'</span>], mobility[<span class="st">'Percentage'</span>], color<span class="op">=</span><span class="st">'#2ca02c'</span>)</span>
+<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Geographic Mobility After Graduation'</span>)</span>
+<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Percentage (%)'</span>)</span>
+<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, v <span class="kw">in</span> <span class="bu">enumerate</span>(mobility[<span class="st">'Percentage'</span>]):</span>
+<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a>    plt.text(v <span class="op">+</span> <span class="dv">1</span>, i, <span class="ss">f"</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">%"</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Regional Analysis Table</span></span>
+<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Regional Distribution of Graduates:"</span>)</span>
+<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'Region'</span><span class="sc">:&lt;25}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Institution %'</span><span class="sc">:&gt;12}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Residence %'</span><span class="sc">:&gt;12}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'Difference'</span><span class="sc">:&gt;10}</span><span class="ss">"</span>)</span>
+<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"-"</span><span class="op">*</span><span class="dv">60</span>)</span>
+<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.notna(row[<span class="st">'REG_INST_Pct'</span>]):</span>
+<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a>        diff <span class="op">=</span> row[<span class="st">'REG_RESP_Pct'</span>] <span class="op">-</span> row[<span class="st">'REG_INST_Pct'</span>]</span>
+<span id="cb19-68"><a href="#cb19-68" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'Region'</span>]<span class="sc">:&lt;25}</span><span class="ss"> </span><span class="sc">{</span>row[<span class="st">'REG_INST_Pct'</span>]<span class="sc">:&gt;11.1f}</span><span class="ss">% </span><span class="sc">{</span>row[<span class="st">'REG_RESP_Pct'</span>]<span class="sc">:&gt;11.1f}</span><span class="ss">% </span><span class="sc">{</span>diff<span class="sc">:&gt;9.1f}</span><span class="ss">%"</span>)</span>
+<span id="cb19-69"><a href="#cb19-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-70"><a href="#cb19-70" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Key Findings</span></span>
+<span id="cb19-71"><a href="#cb19-71" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Key Geographic Findings:"</span>)</span>
+<span id="cb19-72"><a href="#cb19-72" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Ontario has the highest concentration of institutions (47.1%) and residents (45.4%)"</span>)</span>
+<span id="cb19-73"><a href="#cb19-73" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Western provinces show net immigration (+1.4</span><span class="sc">% d</span><span class="st">ifference between residence and institution)"</span>)</span>
+<span id="cb19-74"><a href="#cb19-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Atlantic provinces show slight outmigration (-0.4</span><span class="sc">% d</span><span class="st">ifference)"</span>)</span>
+<span id="cb19-75"><a href="#cb19-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- Quebec maintains stable proportions (21.7</span><span class="sc">% i</span><span class="st">nstitutions vs 21.5</span><span class="sc">% r</span><span class="st">esidence)"</span>)</span>
+<span id="cb19-76"><a href="#cb19-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"- 1</span><span class="sc">% o</span><span class="st">f respondents didn't state their residence location"</span>)</span>
+<span id="cb19-77"><a href="#cb19-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-78"><a href="#cb19-78" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Advanced Visualization: Sankey Diagram (conceptual)</span></span>
+<span id="cb19-79"><a href="#cb19-79" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pySankey.sankey <span class="im">import</span> sankey</span>
+<span id="cb19-80"><a href="#cb19-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-81"><a href="#cb19-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample migration flows (hypothetical example)</span></span>
+<span id="cb19-82"><a href="#cb19-82" aria-hidden="true" tabindex="-1"></a>flows <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb19-83"><a href="#cb19-83" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Source'</span>: [<span class="st">'Atlantic'</span>, <span class="st">'Quebec'</span>, <span class="st">'Ontario'</span>, <span class="st">'West'</span>]<span class="op">*</span><span class="dv">4</span>,</span>
+<span id="cb19-84"><a href="#cb19-84" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Target'</span>: [<span class="st">'Atlantic'</span>]<span class="op">*</span><span class="dv">4</span> <span class="op">+</span> [<span class="st">'Quebec'</span>]<span class="op">*</span><span class="dv">4</span> <span class="op">+</span> [<span class="st">'Ontario'</span>]<span class="op">*</span><span class="dv">4</span> <span class="op">+</span> [<span class="st">'West'</span>]<span class="op">*</span><span class="dv">4</span>,</span>
+<span id="cb19-85"><a href="#cb19-85" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Value'</span>: [<span class="dv">85</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,  <span class="dv">10</span>,<span class="dv">75</span>,<span class="dv">10</span>,<span class="dv">5</span>,  <span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">80</span>,<span class="dv">5</span>,  <span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">80</span>]</span>
+<span id="cb19-86"><a href="#cb19-86" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb19-87"><a href="#cb19-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-88"><a href="#cb19-88" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb19-89"><a href="#cb19-89" aria-hidden="true" tabindex="-1"></a>sankey(flows[<span class="st">'Source'</span>], flows[<span class="st">'Target'</span>], flows[<span class="st">'Value'</span>],</span>
+<span id="cb19-90"><a href="#cb19-90" aria-hidden="true" tabindex="-1"></a>       aspect<span class="op">=</span><span class="dv">20</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb19-91"><a href="#cb19-91" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Inter-Regional Mobility of Graduates'</span>, pad<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb19-92"><a href="#cb19-92" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-12-output-1.png" width="572" height="380" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-12-output-2.png" width="460" height="406" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-12-output-3.png" width="574" height="379" class="figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Regional Distribution of Graduates:
+Region                    Institution %  Residence % Difference
+------------------------------------------------------------
+Atlantic provinces                5.6%         5.2%      -0.4%
+Quebec                           21.7%        21.5%      -0.2%
+Ontario                          47.1%        45.4%      -1.7%
+Western provinces, territories        25.5%        26.9%       1.4%
+
+Key Geographic Findings:
+- Ontario has the highest concentration of institutions (47.1%) and residents (45.4%)
+- Western provinces show net immigration (+1.4% difference between residence and institution)
+- Atlantic provinces show slight outmigration (-0.4% difference)
+- Quebec maintains stable proportions (21.7% institutions vs 21.5% residence)
+- 1% of respondents didn't state their residence location</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 768x480 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-12-output-6.png" width="575" height="499" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="linear-regression-analysis-with-ngs-data" class="level2" data-number="0.6">
+<h2 data-number="0.6" class="anchored" data-anchor-id="linear-regression-analysis-with-ngs-data"><span class="header-section-number">0.6</span> Linear Regression Analysis with NGS Data</h2>
+<div id="801dce27" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'ngs2020.csv'</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore the data</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.info())</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values (coded as 6, 96, 99 etc. based on NGS coding)</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace these with NaN</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>missing_codes <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">96</span>, <span class="dv">99</span>, <span class="dv">9</span>]</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.replace(missing_codes, np.nan)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify your target variable (you'll need to confirm which column is income)</span></span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, if 'PERSINCP' is personal income:</span></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="st">'PERSINCP'</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Select potential predictors (you'll need to verify these based on codebook)</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GENDER2'</span>,        <span class="co"># Gender</span></span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">'EDU_010'</span>,        <span class="co"># Education level</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">'EDU_P020'</span>,       <span class="co"># Additional education info</span></span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CTZSHIPP'</span>,       <span class="co"># Citizenship status</span></span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">'REG_INST'</span>,       <span class="co"># Region of institution</span></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CERTLEVP'</span>,       <span class="co"># Certificate level</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'PGMCIPAP'</span>,       <span class="co"># Program category</span></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MS_P01'</span>,         <span class="co"># Marital status</span></span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'VISBMINP'</span>,       <span class="co"># Visible minority status</span></span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DDIS_FL'</span>         <span class="co"># Disability flag</span></span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add more based on your research question</span></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a clean dataset</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> df[[target] <span class="op">+</span> predictors].dropna()</span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert categorical variables to dummy variables if needed</span></span>
+<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> pd.get_dummies(df_clean, columns<span class="op">=</span>[<span class="st">'GENDER2'</span>, <span class="st">'CTZSHIPP'</span>, <span class="st">'REG_INST'</span>], drop_first<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   PUMFID  CERTLEVP  REG_INST  REG_RESP  PGMCIPAP  PGM_P034  PGM_P036  \
+0   59113         3         2         2         4         2         4   
+1   59114         3         3         3         5         1         6   
+2   59116         3         2         2         6         1         6   
+3   59117         2         4         4         9         1         6   
+4   59118         2         3         3         1         1         6   
+
+   PGM_P100  PGM_P111  PGM_280A  ...  PAR2GRD  PAR2INT  GRADAGEP  GENDER2  \
+0         1         2         2  ...        3        3         3        2   
+1         2         6         2  ...        1        1         1        1   
+2         2         6         2  ...        2        2         2        1   
+3         1         2         2  ...        1        1         1        2   
+4         1         2         2  ...        1        1         4        1   
+
+   MS_P01  MS_P02  CTZSHIPP  VISBMINP  PERSINCP  DDIS_FL  
+0       1       1         1         2         5        2  
+1       1       2         1         2         4        2  
+2       2       2         1         2         1        2  
+3       1       2         1         2         3        2  
+4       1       1         2         1         3        2  
+
+[5 rows x 114 columns]
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 16138 entries, 0 to 16137
+Columns: 114 entries, PUMFID to DDIS_FL
+dtypes: int64(114)
+memory usage: 14.0 MB
+None</code></pre>
+</div>
+</div>
+<section id="statsmodels" class="level3" data-number="0.6.1">
+<h3 data-number="0.6.1" class="anchored" data-anchor-id="statsmodels"><span class="header-section-number">0.6.1</span> statsmodels</h3>
+<div id="9ed04145" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into features and target</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_clean.drop(target, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_clean[target]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for non-numeric columns and handle them</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert categorical variables to numeric using one-hot encoding</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> pd.get_dummies(X, drop_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for and handle missing values</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Use only numeric columns for mean calculation</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>numeric_cols <span class="op">=</span> X.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>X[numeric_cols] <span class="op">=</span> X[numeric_cols].fillna(X[numeric_cols].mean())</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.fillna(y.mean())  <span class="co"># Fill missing values in target if any</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure all data is numeric - force conversion and handle errors</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> X.columns:</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    X[col] <span class="op">=</span> pd.to_numeric(X[col], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> pd.to_numeric(y, errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop any remaining problematic rows with NaN values</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> <span class="op">~</span>(X.isna().<span class="bu">any</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">|</span> pd.isna(y))</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X[mask]</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y[mask]</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to float64 to ensure compatibility with sklearn</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X.astype(<span class="bu">float</span>)</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y.astype(<span class="bu">float</span>)</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets</span></span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and fit the model</span></span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions</span></span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate the model</span></span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R-squared:"</span>, <span class="bu">round</span>(r2_score(y_test, y_pred),<span class="dv">3</span>))</span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"RMSE:"</span>, <span class="bu">round</span>(np.sqrt(mean_squared_error(y_test, y_pred)),<span class="dv">3</span>))</span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-43"><a href="#cb24-43" aria-hidden="true" tabindex="-1"></a><span class="co"># For more detailed statistics (p-values etc.)</span></span>
+<span id="cb24-44"><a href="#cb24-44" aria-hidden="true" tabindex="-1"></a>X_with_const <span class="op">=</span> sm.add_constant(X_train)</span>
+<span id="cb24-45"><a href="#cb24-45" aria-hidden="true" tabindex="-1"></a>sm_model <span class="op">=</span> sm.OLS(y_train, X_with_const).fit()</span>
+<span id="cb24-46"><a href="#cb24-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sm_model.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>R-squared: 0.154
+RMSE: 1.212
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               PERSINCP   R-squared:                       0.166
+Model:                            OLS   Adj. R-squared:                  0.162
+Method:                 Least Squares   F-statistic:                     36.48
+Date:                Sun, 17 Aug 2025   Prob (F-statistic):           3.63e-78
+Time:                        06:54:06   Log-Likelihood:                -3525.4
+No. Observations:                2209   AIC:                             7077.
+Df Residuals:                    2196   BIC:                             7151.
+Df Model:                          12                                         
+Covariance Type:            nonrobust                                         
+================================================================================
+                   coef    std err          t      P&gt;|t|      [0.025      0.975]
+--------------------------------------------------------------------------------
+EDU_010          1.0046      0.250      4.013      0.000       0.514       1.495
+EDU_P020         0.0252      0.073      0.343      0.732      -0.119       0.169
+CERTLEVP         0.5822      0.039     14.777      0.000       0.505       0.659
+PGMCIPAP         0.0333      0.011      3.050      0.002       0.012       0.055
+MS_P01          -0.4898      0.054     -9.056      0.000      -0.596      -0.384
+VISBMINP         0.1237      0.073      1.692      0.091      -0.020       0.267
+DDIS_FL          0.2750      0.054      5.138      0.000       0.170       0.380
+GENDER2_2       -0.1661      0.054     -3.078      0.002      -0.272      -0.060
+CTZSHIPP_2.0     0.0643      0.084      0.769      0.442      -0.100       0.228
+CTZSHIPP_3.0     0.0186      0.116      0.161      0.872      -0.209       0.246
+REG_INST_2       0.3091      0.082      3.747      0.000       0.147       0.471
+REG_INST_3       0.1398      0.092      1.513      0.130      -0.041       0.321
+REG_INST_4       0.3120      0.079      3.946      0.000       0.157       0.467
+==============================================================================
+Omnibus:                      114.134   Durbin-Watson:                   1.973
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              105.041
+Skew:                           0.476   Prob(JB):                     1.55e-23
+Kurtosis:                       2.514   Cond. No.                         68.5
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="field-of-study-vs.-labor-outcomes" class="level2" data-number="0.7">
+<h2 data-number="0.7" class="anchored" data-anchor-id="field-of-study-vs.-labor-outcomes"><span class="header-section-number">0.7</span> Field of Study vs.&nbsp;Labor Outcomes</h2>
+<div id="6a608624" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Employment Rate by Field of Study</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>employment_by_field <span class="op">=</span> df.groupby(<span class="st">'PGMCIPAP'</span>)[<span class="st">'LFSTATP'</span>].<span class="bu">apply</span>(</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: (x <span class="op">==</span> <span class="dv">1</span>).mean() <span class="op">*</span> <span class="dv">100</span>  <span class="co"># % employed</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> sns.barplot(x<span class="op">=</span><span class="st">'PGMCIPAP'</span>, y<span class="op">=</span><span class="st">'LFSTATP'</span>, data<span class="op">=</span>employment_by_field, palette<span class="op">=</span><span class="st">'Blues_d'</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Employment Rates by Field of Study (2023)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Field of Study (Aggregated CIP 2021 Categories)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Percentage Employed (%)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the actual number of categories from the data</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>num_categories <span class="op">=</span> <span class="bu">len</span>(employment_by_field[<span class="st">'PGMCIPAP'</span>].unique())</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create labels - either add the missing label or use the actual category names from my data</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Education'</span>, <span class="st">'Arts/Humanities'</span>, <span class="st">'Social Sciences/Law'</span>, </span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Business/Public Admin'</span>, <span class="st">'Physical/Life Sciences'</span>, </span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Math/Computer Science'</span>, <span class="st">'Engineering/Trades'</span>, </span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Health'</span>, <span class="st">'Other'</span>, <span class="st">'Unknown'</span>  <span class="co"># Added 'Unknown' as the 10th category</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>][:num_categories]  <span class="co"># This ensures we only use as many labels as we have categories</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>ax1.set_xticklabels(labels, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Job Relatedness to Field of Study</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the column exists in the DataFrame before using it</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="co"># You need to replace 'LMAG_11' with the correct column name that exists in my DataFrame</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a><span class="co"># For example, if the correct column is 'JOB_RELATEDNESS' or something similar:</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'JOB_RELATEDNESS'</span> <span class="kw">in</span> df.columns:  <span class="co"># Replace with my actual column name</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>    relatedness <span class="op">=</span> df.groupby(<span class="st">'PGMCIPAP'</span>)[<span class="st">'JOB_RELATEDNESS'</span>].mean().reset_index()</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> sns.barplot(x<span class="op">=</span><span class="st">'PGMCIPAP'</span>, y<span class="op">=</span><span class="st">'JOB_RELATEDNESS'</span>, data<span class="op">=</span>relatedness, palette<span class="op">=</span><span class="st">'Reds_d'</span>)</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>    ax2.set_title(<span class="st">'Job Relatedness to Field of Study (Scale: 1=Closely, 3=Not at All)'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, pad<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>    ax2.set_xlabel(<span class="st">'Field of Study'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>    ax2.set_ylabel(<span class="st">'Mean Relatedness Score'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use the same approach for consistency</span></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>    ax2.set_xticklabels(labels, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Column for job relatedness not found in the DataFrame. Please check the available columns."</span>)</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Optionally print available columns to help identify the correct one</span></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Available columns:"</span>, df.columns.tolist())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Column for job relatedness not found in the DataFrame. Please check the available columns.
+Available columns: ['PUMFID', 'CERTLEVP', 'REG_INST', 'REG_RESP', 'PGMCIPAP', 'PGM_P034', 'PGM_P036', 'PGM_P100', 'PGM_P111', 'PGM_280A', 'PGM_280B', 'PGM_280C', 'PGM_280D', 'PGM_280E', 'PGM_280F', 'PGM_290', 'PGM_350', 'PGM_380', 'PGM_P401', 'PGM_410', 'PGM_415', 'PGM_430', 'COV_010', 'COV_070', 'COV_080', 'EDU_010', 'EDU_P020', 'HLOSINTP', 'STL_010', 'STL_020', 'STULOANS', 'STL_030', 'OWESLGD', 'OWEGVIN', 'STL_080', 'STL_100A', 'STL_100B', 'STL_100C', 'STL_100D', 'STL_130', 'STL_150', 'STL_160B', 'STL_160C', 'STL_160D', 'STL_160E', 'STL_160F', 'STL_160G', 'STL_160H', 'STL_160I', 'STL_160J', 'STL_160L', 'STLP160N', 'SRCFUND', 'STL_170A', 'STL_170B', 'STL_170C', 'STL_170D', 'STL_170E', 'STL_170F', 'STL_170G', 'STL_170H', 'STL_170I', 'STL_170J', 'STL_170L', 'STLP170N', 'RESPP', 'STL_190', 'DBTOTGRD', 'DBTALGRD', 'DBTOTINT', 'DBTALINT', 'SCHOLARP', 'LMA_010', 'LFSTATP', 'LMA2_07', 'LMA3_P01', 'LFCINDP', 'LFCOCCP', 'LFWFTPTP', 'LMA6_05', 'LMA6_08', 'JOBQLEVP', 'JOBQLGRD', 'JOBQLINT', 'LMA6_11', 'LMA6_12', 'LMA6_13A', 'LMA6_13B', 'LMA6_13C', 'JOBINCP', 'LMA6_15', 'AFT_P010', 'AFT_P020', 'AFT_P040', 'AFT_050', 'AFT_070', 'AFT_080', 'AFT_090', 'BEF_P140', 'BEF_160', 'PREVLEVP', 'HLOSGRDP', 'PAR1GRD', 'PAR1INT', 'PAR2GRD', 'PAR2INT', 'GRADAGEP', 'GENDER2', 'MS_P01', 'MS_P02', 'CTZSHIPP', 'VISBMINP', 'PERSINCP', 'DDIS_FL']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\Fuxim\AppData\Local\Temp\ipykernel_6480\2630473076.py:10: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax1 = sns.barplot(x='PGMCIPAP', y='LFSTATP', data=employment_by_field, palette='Blues_d')
+C:\Users\Fuxim\AppData\Local\Temp\ipykernel_6480\2630473076.py:25: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax1.set_xticklabels(labels, rotation=45, ha='right')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="helloNGS_files/figure-html/cell-15-output-3.png" width="763" height="380" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2" data-number="0.8">
+<h2 data-number="0.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">0.8</span> Conclusion</h2>
+<style>
+  .fancy-background {
+    padding: 30px; /* Padding around the content */
+    color: white; /* Text color */
+    text-align: center; /* Centering text */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none"><rect x="50" y="50" width="200" height="200" fill="%23ffffff" style="border-radius: 10px;"/></svg>'); /* SVG background image */
+    background-size: cover; /* Cover the entire area of the block */
+    background-repeat: no-repeat;
+    background-position: center center;
+  `
+</style>
+</section>
+<section id="summary-and-conclusion-for-university-strategic-planning" class="level1 fancy-background" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Summary and Conclusion for University Strategic Planning</h1>
+<p>Based on the National Graduates Survey (Class of 2020) data collected in 2023, I can provide strategic recommendations for university planning. The dataset contains 16,138 records with 114 variables covering education, student loans, employment outcomes, and COVID-19 impacts.</p>
+<section id="key-insights-and-strategic-recommendations" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="key-insights-and-strategic-recommendations"><span class="header-section-number">1.1</span> Key Insights and Strategic Recommendations</h2>
+<section id="program-development-and-delivery" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="program-development-and-delivery"><span class="header-section-number">1.1.1</span> 1. Program Development and Delivery</h3>
+<p><strong>Insights:</strong> - The data includes variables on program level (CERTLEVP), field of study (PGMCIPAP), and delivery mode (PGM_P401 for online/distance education) - Work placements (PGM_P100, PGM_P111) and entrepreneurial skills development (PGM_280A-F) are tracked - Student motivations for program selection (PGM_415) provide insight into decision factors</p>
+<p><strong>Recommendations:</strong> - Analyze which programs have the highest satisfaction rates (PGM_430 - would choose same field again) - Expand programs with strong employment outcomes (using LFSTATP, JOBQLEVP variables) - Develop more work-integrated learning opportunities based on placement outcomes - Enhance entrepreneurship education based on PGM_280A-F metrics - Optimize online/distance education offerings based on PGM_P401 outcomes</p>
+</section>
+<section id="enrollment-and-marketing-strategy" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="enrollment-and-marketing-strategy"><span class="header-section-number">1.1.2</span> 2. Enrollment and Marketing Strategy</h3>
+<p><strong>Insights:</strong> - Data on institution choice factors (PGM_410) reveals what drives student decisions - Regional data for institutions (REG_INST) and student residence (REG_RESP) shows mobility patterns - Demographics (GRADAGEP, GENDER2, CTZSHIPP, VISBMINP) provide population insights</p>
+<p><strong>Recommendations:</strong> - Target marketing messages based on top factors influencing institution choice (PGM_410) - Develop regional recruitment strategies based on REG_INST and REG_RESP patterns - Create targeted outreach for underrepresented demographic groups - Highlight graduate employment outcomes in marketing materials - Emphasize work placement opportunities and entrepreneurial skill development</p>
+</section>
+<section id="student-financial-support" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="student-financial-support"><span class="header-section-number">1.1.3</span> 3. Student Financial Support</h3>
+<p><strong>Insights:</strong> - Comprehensive student loan data (STULOANS, OWESLGD, OWEGVIN) - Information on funding sources (SRCFUND, STL_170A-N) - Scholarship information (SCHOLARP)</p>
+<p><strong>Recommendations:</strong> - Enhance financial aid packages based on debt load analysis - Develop targeted scholarship programs for high-need demographics - Create financial literacy programs based on loan repayment patterns - Establish emergency funding for students at risk of non-completion - Partner with employers for work-study and tuition assistance programs</p>
+</section>
+<section id="covid-19-response-and-resilience-planning" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="covid-19-response-and-resilience-planning"><span class="header-section-number">1.1.4</span> 4. COVID-19 Response and Resilience Planning</h3>
+<p><strong>Insights:</strong> - Data on COVID-19 impacts on program completion (COV_010) - Effects on further education plans (COV_070) - Employment impacts (COV_080)</p>
+<p><strong>Recommendations:</strong> - Develop contingency plans for future disruptions based on COVID-19 impact data - Create flexible program completion pathways for students facing external challenges - Enhance career services to address employment disruptions - Build robust online/hybrid learning infrastructure - Establish student support services focused on resilience and adaptability</p>
+</section>
+<section id="career-services-and-alumni-relations" class="level3" data-number="1.1.5">
+<h3 data-number="1.1.5" class="anchored" data-anchor-id="career-services-and-alumni-relations"><span class="header-section-number">1.1.5</span> 5. Career Services and Alumni Relations</h3>
+<p><strong>Insights:</strong> - Employment status data (LFSTATP) - Job quality metrics (JOBQLEVP, JOBQLGRD) - Income information (JOBINCP, PERSINCP)</p>
+<p><strong>Recommendations:</strong> - Align career services with employment outcome data by program - Develop targeted career preparation for programs with weaker outcomes - Create alumni mentorship networks based on successful graduate pathways - Establish employer partnerships in high-placement industries - Track and promote ROI metrics for different programs based on income outcomes</p>
+</section>
+</section>
+<section id="conclusion-1" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">1.2</span> Conclusion</h2>
+<p>This comprehensive dataset provides valuable insights for strategic university planning across multiple domains. By analyzing program effectiveness, student decision factors, financial needs, and employment outcomes, the university can make data-driven decisions to:</p>
+<ol type="1">
+<li>Optimize program offerings and delivery methods</li>
+<li>Target marketing and recruitment efforts more effectively</li>
+<li>Enhance student financial support systems</li>
+<li>Build institutional resilience against future disruptions</li>
+<li>Strengthen career preparation and alumni connections</li>
+</ol>
+<p>For deeper analysis, I recommend using Python packages like pandas for data manipulation, scikit-learn for predictive modeling, and matplotlib/seaborn for visualization to extract more nuanced patterns from this rich dataset.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
